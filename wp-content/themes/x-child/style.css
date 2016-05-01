@@ -1,0 +1,47 @@
+/*
+
+Theme Name: X &ndash; Child Theme
+Theme URI: http://theme.co/x/
+Author: Themeco
+Author URI: http://theme.co/
+Description: Make all of your modifications to X in this child theme.
+Version: 1.0.0
+Template: x
+
+*/
+
+/* Header Styles */
+.Icon {
+	height: 9rem;
+}
+
+.x-brand {
+	margin-top: 0 !important;
+}
+
+.x-navbar {
+	border-bottom: 1px solid #A3A3A3;
+	background: transparent url('https://s3-us-west-2.amazonaws.com/eb-coffee/paper_texture.jpg')
+}
+
+.cta {
+	float: right;
+    line-height: 90px;	
+}
+
+/* Body Styles */
+.divider {
+	margin:15px 0;
+}
+
+
+
+
+/*Mobile */
+@media (max-width: 767px) {
+	.Icon {
+		height: 8rem;
+		width: 19rem;
+	}
+	
+}
