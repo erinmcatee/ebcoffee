@@ -17,6 +17,7 @@ Template: x
 
 .x-brand {
 	margin-top: 0 !important;
+	width: inherit;
 }
 
 .x-navbar {
