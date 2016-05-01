@@ -10,6 +10,11 @@ Template: x
 
 */
 
+/* global Styles */
+body {
+	background-image: none;
+}
+
 /* Header Styles */
 .Icon {
 	height: 9rem;
