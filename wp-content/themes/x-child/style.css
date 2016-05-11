@@ -40,6 +40,12 @@ body {
 	margin:15px 0;
 }
 
+/* Footer Styles */
+.x-colophon.bottom .x-social-global a {
+	margin: 0 2.25%;
+    font-size: 6rem;
+}
+
 
 
 
