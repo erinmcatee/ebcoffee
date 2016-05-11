@@ -22,7 +22,7 @@ body {
 
 .x-brand {
 	margin-top: 0 !important;
-	width: inherit;
+	width: auto;
 }
 
 .x-navbar {
@@ -47,7 +47,11 @@ body {
 @media (max-width: 767px) {
 	.Icon {
 		height: 8rem;
-		width: 19rem;
+		width: 21rem;
 	}
-	
+	.x-brand,
+	.cta {
+		float: none;
+		text-align: center;
+	}
 }
