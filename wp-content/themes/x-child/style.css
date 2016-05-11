@@ -54,4 +54,7 @@ body {
 		float: none;
 		text-align: center;
 	}
+	.x-subscribe-form {
+		max-width: 100% !important;
+	}
 }
