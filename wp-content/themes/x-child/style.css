@@ -27,7 +27,8 @@ body {
 
 .x-navbar {
 	border-bottom: 1px solid #A3A3A3;
-	background: transparent url('https://s3-us-west-2.amazonaws.com/eb-coffee/paper_texture.jpg')
+	background: transparent url('https://d3e5gn4h5taomv.cloudfront.net/wood_bg_header.jpg');
+	background-position:center center;
 }
 
 .cta {
@@ -46,7 +47,10 @@ body {
     font-size: 6rem;
 }
 
-
+/*Custom map styles */
+#map {
+	height: 500px;
+}
 
 
 /*Responsive */
