@@ -59,10 +59,13 @@ body {
 		height: 8rem;
 		width: 21rem;
 	}
-	.x-brand,
-	.cta {
+	.x-brand {
 		float: none;
 		text-align: center;
+		margin:0 auto !important;
+	}
+	.cta {
+		display: none;
 	}
 	.x-subscribe-form {
 		max-width: 100% !important;
