@@ -96,15 +96,9 @@ if ( ! function_exists( 'x_integrity_entry_meta' ) ) :
       $link   = apply_filters( 'x_entry_meta_comments_link', get_comments_link() );
       $number = apply_filters( 'x_entry_meta_comments_number', get_comments_number() );
 
-      if ( $number == 0 ) {
-        $text = __( 'Leave a Comment' , '__x__' );
-      } else if ( $number == 1 ) {
-        $text = $number . ' ' . __( 'Comment' , '__x__' );
-      } else {
-        $text = $number . ' ' . __( 'Comments' , '__x__' );
-      }
+	  $text = ( 0 === $number ) ? 'Leave a Comment' : sprintf( _n( '%s Comment', '%s Comments', $number, '__x__' ), $number );
 
-      $comments = sprintf( '<span><a href="%1$s" title="%2$s" class="meta-comments"><i class="x-icon-comments" data-x-icon="&#xf086;"></i> %3$s</a></span>',
+$comments = sprintf( '<span><a href="%1$s" title="%2$s" class="meta-comments"><i class="x-icon-comments" data-x-icon="&#xf086;"></i> %3$s</a></span>',
         esc_url( $link ),
         esc_attr( sprintf( __( 'Leave a comment on: &ldquo;%s&rdquo;', '__x__' ), $title ) ),
         $text
@@ -183,7 +177,7 @@ if ( ! function_exists( 'x_integrity_comment' ) ) :
       endif;
       $avatar_variation = ( x_is_product() ) ? ' x-img-thumbnail' : '';
     ?>
-    <li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+    <li id="li-comment-<?php comment_ID(); ?>" itemprop="review" itemscope itemtype="http://schema.org/Review" <?php comment_class(); ?>>
       <?php
       printf( '<div class="x-comment-img">%1$s %2$s</div>',
         '<span class="avatar-wrap cf' . $avatar_variation . '">' . get_avatar( $comment, 120 ) . '</span>',
@@ -193,10 +187,10 @@ if ( ! function_exists( 'x_integrity_comment' ) ) :
       <article id="comment-<?php comment_ID(); ?>" class="comment">
         <header class="x-comment-header">
           <?php
-          printf( '<cite class="x-comment-author">%1$s</cite>',
+          printf( '<cite class="x-comment-author" itemprop="author">%1$s</cite>',
             get_comment_author_link()
           );
-          printf( '<div><a href="%1$s" class="x-comment-time"><time datetime="%2$s">%3$s</time></a></div>',
+          printf( '<div><a href="%1$s" class="x-comment-time"><time itemprop="datePublished datetime="%2$s">%3$s</time></a></div>',
             esc_url( get_comment_link( $comment->comment_ID ) ),
             get_comment_time( 'c' ),
             sprintf( __( '%1$s at %2$s', '__x__' ),
@@ -217,7 +211,7 @@ if ( ! function_exists( 'x_integrity_comment' ) ) :
         <?php if ( '0' == $comment->comment_approved ) : ?>
           <p class="x-comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', '__x__' ); ?></p>
         <?php endif; ?>
-        <section class="x-comment-content">
+        <section class="x-comment-content" itemprop="description">
           <?php comment_text(); ?>
         </section>
         <?php if ( ! x_is_product() ) : ?>

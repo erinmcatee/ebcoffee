@@ -55,6 +55,12 @@ class X_Addons_Updates {
 
   public function ajax_update_check() {
 
+    x_tco()->check_ajax_referer();
+
+    if ( ! current_user_can( 'update_plugins' ) || ! current_user_can( 'update_themes' ) ) {
+      wp_send_json_error();
+    }
+
     delete_site_transient( 'update_themes' );
     x_tco()->updates()->refresh();
     $errors = x_tco()->updates()->get_errors();
@@ -98,6 +104,12 @@ class X_Addons_Updates {
 		if ( isset( $data['plugins'] ) ) {
 			$this->cache_extensions( $data['plugins'] );
 		}
+
+    if ( isset( $data['error'] ) ) {
+      delete_option( 'x_product_validation_key' );
+      delete_site_transient( 'update_themes' );
+      delete_site_transient( 'update_plugins' );
+    }
 
   }
 
@@ -156,8 +168,12 @@ class X_Addons_Updates {
   //
 
   public function init() {
-		$plugin_updater = new X_Plugin_Updater;
+
+    if ( ! is_admin() ) return;
+
+    $plugin_updater = new X_Plugin_Updater;
 		$theme_updater = new X_Theme_Updater;
+
   }
 
   public function validate( $key ) {

@@ -104,14 +104,8 @@ if ( ! function_exists( 'x_ethos_entry_meta' ) ) :
       $title  = apply_filters( 'x_entry_meta_comments_title', get_the_title() );
       $link   = apply_filters( 'x_entry_meta_comments_link', get_comments_link() );
       $number = apply_filters( 'x_entry_meta_comments_number', get_comments_number() );
-
-      if ( $number == 0 ) {
-        $text = __( 'Leave a Comment' , '__x__' );
-      } else if ( $number == 1 ) {
-        $text = $number . ' ' . __( 'Comment' , '__x__' );
-      } else {
-        $text = $number . ' ' . __( 'Comments' , '__x__' );
-      }
+      
+      $text = ( 0 === $number ) ? 'Leave a Comment' : sprintf( _n( '%s Comment', '%s Comments', $number, '__x__' ), $number );
 
       $comments = sprintf( '<span><a href="%1$s" title="%2$s" class="meta-comments">%3$s</a></span>',
         esc_url( $link ),
@@ -345,7 +339,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
         $rating = esc_attr( get_comment_meta( $GLOBALS['comment']->comment_ID, 'rating', true ) );
       endif;
     ?>
-    <li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+    <li id="li-comment-<?php comment_ID(); ?>" itemprop="review" itemscope itemtype="http//schema.org/Review" <?php comment_class(); ?>>
       <article id="comment-<?php comment_ID(); ?>" class="comment">
         <?php
         printf( '<div class="x-comment-img">%1$s %2$s</div>',
@@ -357,7 +351,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
           <header class="x-comment-header">
             <div class="x-comment-meta">
               <?php
-              printf( '<a href="%1$s" class="x-comment-time"><time datetime="%2$s">%3$s</time></a>',
+              printf( '<a href="%1$s" class="x-comment-time"><time itemprop="datePublished datetime="%2$s">%3$s</time></a>',
                 esc_url( get_comment_link( $comment->comment_ID ) ),
                 get_comment_time( 'c' ),
                 sprintf( __( '%1$s', '__x__' ),
@@ -371,7 +365,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
               <?php edit_comment_link( __( 'Edit <i class="x-icon-edit" data-x-icon="&#xf044;"></i>', '__x__' ) ); ?>
             </div>
             <?php
-            printf( '<cite class="x-comment-author">%1$s</cite>',
+            printf( '<cite class="x-comment-author" itemprop="author">%1$s</cite>',
               get_comment_author_link()
             );
             ?>
@@ -386,7 +380,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
           <?php if ( '0' == $comment->comment_approved ) : ?>
             <p class="x-comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', '__x__' ); ?></p>
           <?php endif; ?>
-          <section class="x-comment-content">
+          <section class="x-comment-content" itemprop="description">
             <?php comment_text(); ?>
           </section>
         </div>

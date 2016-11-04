@@ -39,9 +39,9 @@ $is_one_page_nav = x_is_one_page_navigation();
       <div class="x-navbar-inner">
         <div class="x-container max width">
           <?php x_get_view( 'global', '_brand' ); ?>
-          <?php x_get_view( 'global', '_cta' ); ?>
+          <?php // x_get_view( 'global', '_cta' ); ?>
           
-          <?php // x_get_view( 'global', '_nav', 'primary' ); ?>
+          <?php x_get_view( 'global', '_nav', 'primary' ); ?>
         </div>
       </div>
     </div>

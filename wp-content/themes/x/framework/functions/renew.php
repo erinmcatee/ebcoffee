@@ -96,15 +96,11 @@ if ( ! function_exists( 'x_renew_entry_meta' ) ) :
       $link   = apply_filters( 'x_entry_meta_comments_link', get_comments_link() );
       $number = apply_filters( 'x_entry_meta_comments_number', get_comments_number() );
 
-      if ( $number == 0 ) {
-        $text = __( 'Leave a Comment' , '__x__' );
-      } else if ( $number == 1 ) {
-        $text = $number . ' ' . __( 'Comment' , '__x__' );
-      } else {
-        $text = $number . ' ' . __( 'Comments' , '__x__' );
-      }
+	  
+	  $text = ( 0 === $number ) ? 'Leave a Comment' : sprintf( _n( '%s Comment', '%s Comments', $number, '__x__' ), $number );
 
-      $comments = sprintf( '<span><a href="%1$s" title="%2$s" class="meta-comments">%3$s</a></span>',
+
+	  $comments = sprintf( '<span><a href="%1$s" title="%2$s" class="meta-comments">%3$s</a></span>',
         esc_url( $link ),
         esc_attr( sprintf( __( 'Leave a comment on: &ldquo;%s&rdquo;', '__x__' ), $title ) ),
         $text
@@ -187,7 +183,7 @@ if ( ! function_exists( 'x_renew_comment' ) ) :
         $comment_avatar = get_avatar( $comment, 120 );
       }
     ?>
-    <li id="li-comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+    <li id="li-comment-<?php comment_ID(); ?>" itemprop="review" itemscope itemtype="http://schema.org/Review" <?php comment_class(); ?>>
       <article id="comment-<?php comment_ID(); ?>" class="comment">
         <?php
         printf( '<div class="x-comment-img">%s</div>',
@@ -202,7 +198,7 @@ if ( ! function_exists( 'x_renew_comment' ) ) :
         <div class="x-comment-wrap">
           <header class="x-comment-header">
             <?php
-            printf( '<cite class="x-comment-author">%1$s</cite>',
+            printf( '<cite class="x-comment-author" itemprop="author">%1$s</cite>',
               get_comment_author_link()
             );
             if ( x_is_product() && get_option('woocommerce_enable_review_rating') == 'yes' ) : ?>
@@ -212,7 +208,7 @@ if ( ! function_exists( 'x_renew_comment' ) ) :
                 </div>
               </div>
             <?php endif;
-            printf( '<div><a href="%1$s" class="x-comment-time"><time datetime="%2$s">%3$s</time></a></div>',
+            printf( '<div><a href="%1$s" class="x-comment-time"><time itemprop="datePublished" datetime="%2$s">%3$s</time></a></div>',
               esc_url( get_comment_link( $comment->comment_ID ) ),
               get_comment_time( 'c' ),
               sprintf( __( '%1$s at %2$s', '__x__' ),
@@ -226,7 +222,7 @@ if ( ! function_exists( 'x_renew_comment' ) ) :
           <?php if ( '0' == $comment->comment_approved ) : ?>
             <p class="x-comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', '__x__' ); ?></p>
           <?php endif; ?>
-          <section class="x-comment-content">
+          <section class="x-comment-content" itemprop="description">
             <?php comment_text(); ?>
           </section>
         </div>

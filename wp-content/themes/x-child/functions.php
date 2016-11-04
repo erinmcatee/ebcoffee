@@ -46,3 +46,150 @@ function google_analytics_tracking_code(){ ?>
 add_action('wp_head', 'google_analytics_tracking_code');
 
 
+// Include the Google Maps API script & draw map
+// =============================================================================
+
+function draw_ebcoffee_map() { 
+	wp_enqueue_script('delivery-map', get_stylesheet_directory_uri() . '/js/delivery-map.js', array('jquery'), '', '', true);
+} 
+add_action('wp_enqueue_scripts', 'draw_ebcoffee_map');
+
+
+//Google maps API script load, draw map
+function google_maps_api(){
+	wp_register_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD8gAHh9c4lPmqyfte7kfpPfy0KK1j7Nwg&callback=initMap', array(), '1.0.0', true );
+	if ( is_page( 'delivery-range' ) ) {
+    	wp_enqueue_script( 'google-map-api' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'google_maps_api' );
+
+
+//to add async & defer to loading of scripts
+// =============================================================================
+function add_async_attribute($tag, $handle) {
+    if ( 'google-map-api' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' async defer src', $tag );
+}
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+
+
+// Favicons
+// =============================================================================
+function eb_favicon_links() {
+    echo '<link rel="apple-touch-icon" sizes="180x180" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/apple-touch-icon.png">' . "\n";
+	echo '<link rel="icon" type="image/png" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/favicon-32x32.png" sizes="32x32">' . "\n";
+	echo '<link rel="icon" type="image/png" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/favicon-16x16.png" sizes="16x16">' . "\n";
+	echo '<link rel="manifest" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/manifest.json">' . "\n";
+	echo '<link rel="mask-icon" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/safari-pinned-tab.svg" color="#5bbad5">' . "\n";
+	echo '<meta name="theme-color" content="#ffffff">' . "\n";
+}
+add_action( 'wp_head', 'eb_favicon_links' );
+
+// BHC Social Meta override for social plugin
+// =============================================================================
+function x_social_meta() {
+	return;
+}
+
+
+// Include fonts in head
+// =============================================================================
+function google_fonts() {
+	$query_args = array(
+		'family' => 'Pacifico',
+		'subset' => 'latin,latin-ext'
+	);
+	wp_register_style( 'google_fonts', add_query_arg( $query_args, "//fonts.googleapis.com/css" ), array(), null );
+}      
+add_action('wp_enqueue_scripts', 'google_fonts');
+
+
+// ACF options page
+// =============================================================================
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page('E&B Settings');
+}
+
+// Copyright Year Shortcode
+// =============================================================================
+function year_shortcode() {
+  $year = date('Y');
+  return $year;
+}
+add_shortcode('year', 'year_shortcode');
+
+//WooCommerce Modifications
+// =============================================================================
+// Remove price ranges.
+//
+
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 50 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 60 );
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 5 );
+
+
+// Cart actions.
+//First remove x-theme function, then rewrite it.
+function remove_x_woocommerce_cart_actions() {
+	remove_action( 'woocommerce_cart_actions', 'x_woocommerce_cart_actions' );
+}
+add_action('wp_loaded', 'remove_x_woocommerce_cart_actions');
+
+
+function x_woocommerce_cart_actions_eb() {
+
+  $output = '';
+
+
+  //
+  // Check based off of wc_coupons_enabled(), which is only available in
+  // WooCommerce v2.5+.
+  //
+
+  if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) {
+    $output .= '<input type="submit" class="x-btn x-btn-regular x-btn-block" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
+  }
+
+  echo $output;
+
+}
+add_action( 'woocommerce_cart_actions', 'x_woocommerce_cart_actions_eb' );
+
+
+// Remove phone from required fields
+//
+add_filter( 'woocommerce_billing_fields', 'wc_npr_filter_phone', 10, 1 );
+function wc_npr_filter_phone( $address_fields ) {
+	$address_fields['billing_phone']['required'] = false;
+	return $address_fields;
+}
+
+// Change login error for username/email
+add_filter('login_errors', create_function('$a', "return '<b>Error:</b> Email address is required.';"));
+
+// Remove Country from checkout
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+     unset($fields['billing']['billing_country']);
+     unset($fields['shipping']['shipping_country']);
+
+     return $fields;
+}
+
+
+// Do Not Remove Woocommerce Plugin Settings
+// =============================================================================
+function x_woocommerce_donot_remove_plugin_setting(){
+  if ( ! is_admin() ) {
+    return;
+  }
+  remove_filter( 'woocommerce_product_settings', 'x_woocommerce_remove_plugin_settings', 10 );
+}
+add_action('init', 'x_woocommerce_donot_remove_plugin_setting');
