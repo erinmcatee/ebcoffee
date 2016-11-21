@@ -39,6 +39,35 @@ small {
 .clear {
 	clear:both;
 }
+
+.x-highlight.light {
+    text-shadow: 0 1px 1px rgba(0,0,0,0.65);
+    color: #fff;	
+	background-color: #92724e;
+	margin-right: .4em;
+	text-transform: capitalize;
+}
+
+.x-highlight.medium {
+    text-shadow: 0 1px 1px rgba(0,0,0,0.65);
+    color: #fff;	
+	background-color: #563a19;	
+	margin-right: .4em;
+	text-transform: capitalize;
+}
+
+.x-highlight.bold {
+	text-shadow: 0 -1px 1px #000;
+    color: #fff;
+	background-color: #3e2d1a;
+	margin-right: .4em;
+	text-transform: capitalize;
+}
+
+.post-type-archive-product .roast-tag {
+	margin: 0 0 .5em;
+}
+
 /* Header Styles */
 .header-min-height { /*for EB custom header bg image */
 	min-height: 115px;

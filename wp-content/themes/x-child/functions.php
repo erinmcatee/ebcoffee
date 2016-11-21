@@ -125,6 +125,15 @@ add_shortcode('year', 'year_shortcode');
 // Remove price ranges.
 //
 
+/**
+ * Output the product roast.
+ *
+ * @subpackage	Product
+ */
+function woocommerce_template_single_eb_roast_level() {
+	wc_get_template( 'single-product/roast-level.php' );
+}
+
 //remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 50 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 60 );
@@ -132,6 +141,9 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 5 );
+
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_level', 20 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_eb_roast_level', 1 );
 
 
 // Cart actions.
@@ -147,18 +159,18 @@ function x_woocommerce_cart_actions_eb() {
   $output = '';
 
 
-  //
-  // Check based off of wc_coupons_enabled(), which is only available in
-  // WooCommerce v2.5+.
-  //
+//
+// Check based off of wc_coupons_enabled(), which is only available in
+// WooCommerce v2.5+.
+//
+if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) {
+	$output .= '<input type="submit" class="x-btn x-btn-regular x-btn-block" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
+}
 
-  if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) {
-    $output .= '<input type="submit" class="x-btn x-btn-regular x-btn-block" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
-  }
-
-  echo $output;
+echo $output;
 
 }
+
 add_action( 'woocommerce_cart_actions', 'x_woocommerce_cart_actions_eb' );
 
 
@@ -193,3 +205,19 @@ function x_woocommerce_donot_remove_plugin_setting(){
   remove_filter( 'woocommerce_product_settings', 'x_woocommerce_remove_plugin_settings', 10 );
 }
 add_action('init', 'x_woocommerce_donot_remove_plugin_setting');
+
+
+// Roast Level, with shortcode.
+// =============================================================================
+function get_roast_tag($atts) {
+	$a = shortcode_atts( array(
+		'level' => '',
+	), $atts );
+	
+	$roast_level = $a['level'];
+	
+	return '<mark class=" x-highlight '. $roast_level .'">'. $roast_level .'</mark>';
+}
+add_shortcode('roast', 'get_roast_tag');
+
+
