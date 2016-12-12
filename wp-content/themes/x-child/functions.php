@@ -131,6 +131,14 @@ add_shortcode('year', 'year_shortcode');
  * @subpackage	Product
  */
 function woocommerce_template_single_eb_roast_level() {
+	wc_get_template( 'single-product/stock-message.php' );
+}
+/** 
+ * Output the stock message if populated. Relies on ACF.
+ *
+ * @subpackage	Product
+ */
+function woocommerce_template_single_eb_stock_message() {
 	wc_get_template( 'single-product/roast-level.php' );
 }
 
@@ -143,7 +151,11 @@ add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_s
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 5 );
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_level', 20 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 19 );
+
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_eb_roast_level', 1 );
+
+
 
 
 // Cart actions.
