@@ -69,6 +69,18 @@ small {
 }
 
 /* Header Styles */
+.header-message {
+	padding:0;
+	margin: 0;
+}
+
+.header-message p {
+	margin: .5em 0;
+	line-height: 1.2;
+	color: #73120c;
+	font-weight: 700;
+}
+
 .header-min-height { /*for EB custom header bg image */
 	min-height: 115px;
 }

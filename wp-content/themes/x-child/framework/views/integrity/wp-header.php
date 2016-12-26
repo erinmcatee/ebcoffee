@@ -11,6 +11,8 @@
 <?php x_get_view( 'global', '_header' ); ?>
 
   <?php x_get_view( 'global', '_slider-above' ); ?>
+  
+  <?php x_get_view( 'integrity', '_eb-header-message' ); ?>
 
   <header class="<?php x_masthead_class(); ?>" role="banner">
     <?php x_get_view( 'global', '_topbar' ); ?>
