@@ -98,6 +98,7 @@ small {
 .x-brand {
 	margin-top: 0 !important;
 	width: auto;
+	height: 0px;
 }
 
 .x-navbar {
@@ -113,6 +114,10 @@ small {
 .cta {
 	float: right;
     line-height: 90px;	
+}
+
+.x-nav-wrap.desktop > .x-nav {
+	height:0;
 }
 
 /* Body Styles */
@@ -260,6 +265,27 @@ header.highlight
     padding: 1rem;
     color: #b7b7b7 !important;
     background-color: transparent;
+}
+
+/*Revolution SLider */
+.rev_slider_wrapper .x-btn {
+    padding: 0.563em 1.125em 0.813em !important;
+    font-size: 18px !important;
+}
+@media (max-width: 979px) {
+    .rev_slider_wrapper .x-btn {
+        font-size: 18px !important;
+    }
+}
+@media (max-width: 767px) {
+    .rev_slider_wrapper .x-btn {
+        font-size: 18px !important;
+    }
+}
+@media (max-width: 480px) {
+    .rev_slider_wrapper .x-btn {
+        font-size: 18px !important;
+    }
 }
 
 
