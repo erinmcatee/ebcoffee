@@ -55,12 +55,6 @@ function x_customizer_options_register( $wp_customize ) {
     '1' => 'On',
     ''  => 'Off'
   );
-  
-  $list_overflow_options = array(
-	  'overflow-scroll' => __( 'On (no submenu support)', '__x__' ),
-	  'overflow-visible' => __( 'Off', '__x__' )
-  );
-
 
   $list_stacks = array(
     'integrity' => __( 'Integrity', '__x__' ),
@@ -101,6 +95,16 @@ function x_customizer_options_register( $wp_customize ) {
     'featured'       => __( 'Featured', '__x__' )
   );
 
+  $list_root_font_size_modes = array(
+    'stepped' => __( 'Stepped', '__x__' ),
+    'scaling' => __( 'Scaling', '__x__' )
+  );
+
+  $list_root_font_size_units = array(
+    'px' => __( 'px', '__x__' ),
+    'em' => __( 'em', '__x__' )
+  );
+
   $list_button_styles = array(
     'real'        => __( '3D', '__x__' ),
     'flat'        => __( 'Flat', '__x__' ),
@@ -132,14 +136,6 @@ function x_customizer_options_register( $wp_customize ) {
   $list_logo_navigation_layouts = array(
     'inline'  => __( 'Inline', '__x__' ),
     'stacked' => __( 'Stacked', '__x__' )
-  );
-
-  $list_widget_areas = array(
-    0 => __( 'None (Disabled)', '__x__' ),
-    1 => __( 'One', '__x__' ),
-    2 => __( 'Two', '__x__' ),
-    3 => __( 'Three', '__x__' ),
-    4 => __( 'Four', '__x__' )
   );
 
   $list_left_right_positioning = array(
@@ -220,6 +216,26 @@ function x_customizer_options_register( $wp_customize ) {
     'step' => '0.001'
   );
 
+  $list_navbar_positions = array(
+    'static-top'  => __( 'Static Top', '__x__' ),
+    'fixed-top'   => __( 'Fixed Top', '__x__' ),
+    'fixed-left'  => __( 'Fixed Left', '__x__' ),
+    'fixed-right' => __( 'Fixed Right', '__x__' )
+  );
+
+  $list_logo_navigation_layouts = array(
+    'inline'  => __( 'Inline', '__x__' ),
+    'stacked' => __( 'Stacked', '__x__' )
+  );
+
+  $list_widget_areas = array(
+    0 => __( 'None (Disabled)', '__x__' ),
+    1 => __( 'One', '__x__' ),
+    2 => __( 'Two', '__x__' ),
+    3 => __( 'Three', '__x__' ),
+    4 => __( 'Four', '__x__' )
+  );
+
 
   //
   // Sections.
@@ -239,7 +255,8 @@ function x_customizer_options_register( $wp_customize ) {
   $x['sec'][] = array( 'x_customizer_section_portfolio',         __( 'Portfolio', '__x__' ),         12 );
   $x['sec'][] = array( 'x_customizer_section_social',            __( 'Social', '__x__' ),            16 );
   $x['sec'][] = array( 'x_customizer_section_site_icons',        __( 'Site Icons', '__x__' ),        17 );
-  $x['sec'][] = array( 'x_customizer_section_custom',            __( 'Custom', '__x__' ),            18 );
+  $x['sec'][] = array( 'x_customizer_section_miscellaneous',     __( 'Miscellaneous', '__x__' ),     18 );
+  $x['sec'][] = array( 'x_customizer_section_custom',            __( 'Custom', '__x__' ),            19 );
 
   if ( X_BBPRESS_IS_ACTIVE ) {
     $x['sec'][] = array( 'x_customizer_section_bbpress', __( 'bbPress', '__x__' ), 13 );
@@ -635,6 +652,48 @@ function x_customizer_options_register( $wp_customize ) {
   // Options - Typography.
   //
 
+
+      $x['set'][] = array( 'x_root_font_size_mode', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_mode', 'radio', __( 'Root Font Size Mode', '__x__' ), $list_root_font_size_modes, 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_unit', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_unit', 'radio', __( 'Font Size Unit', '__x__' ), $list_root_font_size_units, 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_xs', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_xs', 'text', __( 'Font Size (sm)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_sm', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_sm', 'text', __( 'Font Size (xs)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_md', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_md', 'text', __( 'Font Size (md)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_lg', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_lg', 'text', __( 'Font Size (lg)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_stepped_xl', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_stepped_xl', 'text', __( 'Font Size (xl)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_scaling_unit', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_scaling_unit', 'radio', __( 'Font Size Unit', '__x__' ), $list_root_font_size_units, 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_scaling_min', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_scaling_min', 'text', __( 'Minimum Font Size', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_scaling_max', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_scaling_max', 'text', __( 'Maximum Font Size', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_scaling_lower_limit', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_scaling_lower_limit', 'text', __( 'Lower Limit (Breakpoint)', '__x__' ), 'x_customizer_section_typography' );
+
+      $x['set'][] = array( 'x_root_font_size_scaling_upper_limit', 'refresh' );
+      $x['con'][] = array( 'x_root_font_size_scaling_upper_limit', 'text', __( 'Upper Limit (Breakpoint)', '__x__' ), 'x_customizer_section_typography' );
+
+
+      //
+      // Google Fonts subsets.
+      //
+
       $x['set'][] = array( 'x_google_fonts_subsets', 'refresh' );
       $x['con'][] = array( 'x_google_fonts_subsets', 'radio', __( 'Google Fonts Subsets', '__x__' ), $list_on_off, 'x_customizer_section_typography' );
 
@@ -658,11 +717,8 @@ function x_customizer_options_register( $wp_customize ) {
       $x['set'][] = array( 'x_body_font_color', 'refresh' );
       $x['con'][] = array( 'x_body_font_color', 'color', __( 'Body Font Color', '__x__' ), 'x_customizer_section_typography' );
 
-      $x['set'][] = array( 'x_body_font_size', 'refresh' );
-      $x['con'][] = array( 'x_body_font_size', 'text', __( 'Body Font Size (px)', '__x__' ), 'x_customizer_section_typography' );
-
-      $x['set'][] = array( 'x_content_font_size', 'refresh' );
-      $x['con'][] = array( 'x_content_font_size', 'text', __( 'Content Font Size (px)', '__x__' ), 'x_customizer_section_typography' );
+      $x['set'][] = array( 'x_content_font_size_rem', 'refresh' );
+      $x['con'][] = array( 'x_content_font_size_rem', 'text', __( 'Content Font Size (rem)', '__x__' ), 'x_customizer_section_typography' );
 
       $x['set'][] = array( 'x_body_font_weight', 'refresh' );
       $x['con'][] = array( 'x_body_font_weight', 'radio', __( 'Body Font Weight', '__x__' ), $list_all_font_weights, 'x_customizer_section_typography' );
@@ -767,14 +823,11 @@ function x_customizer_options_register( $wp_customize ) {
 
 
   //
-  // Options - Header.
+  // Options - Header. (x_customizer_section_header)
   //
 
       $x['set'][] = array( 'x_navbar_positioning', 'refresh' );
       $x['con'][] = array( 'x_navbar_positioning', 'radio', __( 'Navbar Position', '__x__' ), $list_navbar_positions, 'x_customizer_section_header' );
-      
-      $x['set'][] = array( 'x_fixed_menu_scroll', 'refresh' );
-      $x['con'][] = array( 'x_fixed_menu_scroll', 'radio', __('Navbar Scrolling', '__x__'),$list_overflow_options, 'x_customizer_section_header' );
 
 
       //
@@ -934,8 +987,9 @@ function x_customizer_options_register( $wp_customize ) {
       $x['con'][] = array( 'x_breadcrumb_display', 'radio', __( 'Breadcrumbs', '__x__' ), $list_on_off, 'x_customizer_section_header' );
 
 
+
   //
-  // Options - Footer.
+  // Options - Footer. (x_customizer_section_footer)
   //
 
       $x['set'][] = array( 'x_footer_widget_areas', 'refresh' );
@@ -955,20 +1009,6 @@ function x_customizer_options_register( $wp_customize ) {
 
       $x['set'][] = array( 'x_footer_content', 'refresh' );
       $x['con'][] = array( 'x_footer_content', 'textarea', __( 'Footer Content', '__x__' ), 'x_customizer_section_footer' );
-
-
-      //
-      // Scroll top anchor.
-      //
-
-      $x['set'][] = array( 'x_footer_scroll_top_display', 'refresh' );
-      $x['con'][] = array( 'x_footer_scroll_top_display', 'radio', __( 'Scroll Top Anchor', '__x__' ), $list_on_off, 'x_customizer_section_footer' );
-
-      $x['set'][] = array( 'x_footer_scroll_top_position', 'refresh' );
-      $x['con'][] = array( 'x_footer_scroll_top_position', 'radio', __( 'Scroll Top Anchor Position', '__x__' ), $list_left_right_positioning, 'x_customizer_section_footer' );
-
-      $x['set'][] = array( 'x_footer_scroll_top_display_unit', 'refresh' );
-      $x['con'][] = array( 'x_footer_scroll_top_display_unit', 'text', __( 'When to Display the Scroll Top Anchor (%)', '__x__' ), 'x_customizer_section_footer' );
 
 
   //
@@ -1384,6 +1424,24 @@ function x_customizer_options_register( $wp_customize ) {
 
       $x['set'][] = array( 'x_icon_tile_bg_color', 'refresh' );
       $x['con'][] = array( 'x_icon_tile_bg_color', 'color', __( 'Tile Icon Background Color', '__x__' ), 'x_customizer_section_site_icons' );
+
+
+  //
+  // Options - Miscellaneous.
+  //
+
+      //
+      // Scroll top anchor (legacy).
+      //
+
+      $x['set'][] = array( 'x_footer_scroll_top_display', 'refresh' );
+      $x['con'][] = array( 'x_footer_scroll_top_display', 'radio', __( 'Scroll Top Anchor', '__x__' ), $list_on_off, 'x_customizer_section_miscellaneous' );
+
+      $x['set'][] = array( 'x_footer_scroll_top_position', 'refresh' );
+      $x['con'][] = array( 'x_footer_scroll_top_position', 'radio', __( 'Scroll Top Anchor Position', '__x__' ), $list_left_right_positioning, 'x_customizer_section_miscellaneous' );
+
+      $x['set'][] = array( 'x_footer_scroll_top_display_unit', 'refresh' );
+      $x['con'][] = array( 'x_footer_scroll_top_display_unit', 'text', __( 'When to Display the Scroll Top Anchor (%)', '__x__' ), 'x_customizer_section_miscellaneous' );
 
 
   //

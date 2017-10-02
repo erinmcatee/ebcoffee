@@ -46,38 +46,30 @@ endif;
 if ( ! function_exists( 'x_setup_theme' ) ) :
   function x_setup_theme() {
 
-    //
-    // Localization.
-    //
+    // Localization
+    // ------------
     // Translations can be added to the /framework/lang/ directory.
-    //
 
     load_theme_textdomain( '__x__', X_TEMPLATE_PATH . '/framework/lang' );
 
 
-    //
-    // Automatic feed links.
-    //
+    // Automatic Feed Links
+    // --------------------
     // Adds RSS feed links to <head> for posts and comments.
-    //
 
     add_theme_support( 'automatic-feed-links' );
 
 
-    //
-    // Post formats.
-    //
+    // Post Formats
+    // ------------
     // Adds support for a variety of post formats.
-    //
 
     add_theme_support( 'post-formats', array( 'link', 'gallery', 'quote', 'image', 'video', 'audio' ) );
 
 
-    //
-    // WordPress menus.
-    //
+    // WordPress Menus
+    // ---------------
     // This theme uses wp_nav_menu() in two locations.
-    //
 
     register_nav_menus( array(
       'primary' => __( 'Primary Menu', '__x__' ),
@@ -85,11 +77,9 @@ if ( ! function_exists( 'x_setup_theme' ) ) :
     ) );
 
 
-    //
-    // Featured images.
-    //
+    // Featured Images
+    // ---------------
     // Theme support for featured images and thumbnail sizes.
-    //
 
     add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 100, 9999 );
@@ -99,30 +89,28 @@ if ( ! function_exists( 'x_setup_theme' ) ) :
     add_image_size( 'entry-cropped-fullwidth', x_post_thumbnail_width_full(), x_post_thumbnail_cropped_height_full(), true  );
 
 
-    //
-    // WooCommerce.
-    //
+    // WooCommerce
+    // -----------
     // Theme support for the WooCommerce plugin.
-    //
 
     add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
 
 
-    //
-    // Allow shortcodes in widgets.
-    //
+    // Allow Shortcodes in Widgets
+    // ---------------------------
 
     add_filter( 'widget_text', 'do_shortcode' );
 
 
-    //
-    // Remove unnecessary stuff.
-    //
+    // Remove Unnecessary Stuff
+    // ------------------------
     // 1. Version number (for security).
     // 2. Really simple discovery.
     // 3. Windows live writer.
     // 4. Post relational links.
-    //
 
     remove_action( 'wp_head', 'wp_generator' );                    // 1
     remove_action( 'wp_head', 'rsd_link' );                        // 2
@@ -142,11 +130,9 @@ endif;
 
 if ( ! function_exists( 'x_bust_caches' ) ) :
   function x_bust_caches() {
-
     if ( isset( $_GET['x-bust-caches'] ) ) {
       x_bust_google_fonts_cache();
     }
-
   }
   add_action( 'admin_init', 'x_bust_caches' );
 endif;

@@ -9,110 +9,29 @@
 // =============================================================================
 // TABLE OF CONTENTS
 // -----------------------------------------------------------------------------
-//   01. Administration
-//   02. Global Setup
-//   03. Shop
-//   04. Product
-//   05. Cart
-//   06. Related Products
-//   07. Upsells
-//   08. Navbar
-//   09. AJAX
+//   01. Global Setup
+//   02. Shop
+//   03. Product
+//   04. Cart
+//   05. Related Products
+//   06. Upsells
+//   07. Navbar
+//   08. AJAX
+//   09. New Cranium Stuff (To Be Organized Later)
 // =============================================================================
-
-// Administration
-// =============================================================================
-
-//
-// Image sizes.
-//
-// 1. Product category thumbs.
-// 2. Single product thumbs.
-// 3. Image gallery thumbs.
-//
-
-function x_woocommerce_image_dimensions() {
-  $catalog = array(
-    'width'  => '250',
-    'height' => '275',
-    'crop'   => 1
-  );
-
-  $single = array(
-    'width'  => '400',
-    'height' => '400',
-    'crop'   => 1
-  );
-
-  $thumbnail = array(
-    'width'  => '100',
-    'height' => '100',
-    'crop'   => 1
-  );
-
-  update_option( 'shop_catalog_image_size', $catalog );     // 1
-  update_option( 'shop_single_image_size', $single );       // 2
-  update_option( 'shop_thumbnail_image_size', $thumbnail ); // 3
-}
-
-if ( isset( $_GET['activated'] ) ) {
-  add_action( 'admin_init', 'x_woocommerce_image_dimensions', 1 );
-}
-
-//
-// Modify variation images to use the X entry size like single simple products to avoid display issues
-//
-
-function x_woocommerce_modify_variable_image_size( $child_id, $instance, $variation ) {
-	$attachment_id = get_post_thumbnail_id( $variation->get_variation_id() );
-	$attachment = wp_get_attachment_image_src( $attachment_id, 'entry' );
-	$image_src = $attachment ? current( $attachment) : '';
-	$child_id['image_src'] = $image_src;
-
-	return $child_id;
-}
-
-add_filter( 'woocommerce_available_variation', 'x_woocommerce_modify_variable_image_size', 10, 3);
-
-
-//
-// Remove plugin settings.
-//
-
-function x_woocommerce_remove_plugin_settings( $settings ) {
-
-  foreach ( $settings as $key => $setting ) {
-
-    $id = $setting['id'];
-
-    if ( $id == 'image_options' || $id == 'shop_catalog_image_size' || $id == 'shop_single_image_size' || $id == 'shop_thumbnail_image_size' ) {
-      unset( $settings[$key] );
-    }
-
-  }
-
-  return $settings;
-
-}
-
-add_filter( 'woocommerce_product_settings', 'x_woocommerce_remove_plugin_settings', 10 );
-
-
 
 // Global Setup
 // =============================================================================
 
-//
-// Remove default wrapper.
-//
+// Remove Default Wrapper
+// ----------------------
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
 
-//
-// Remove page title.
-//
+// Remove Page Title
+// -----------------
 
 function x_woocommerce_show_page_title() {
   return false;
@@ -125,9 +44,8 @@ add_filter( 'woocommerce_show_page_title', 'x_woocommerce_show_page_title' );
 // Shop
 // =============================================================================
 
-//
-// Title.
-//
+// Title
+// -----
 
 function x_woocommerce_template_loop_product_title() {
   echo '<h3><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>';
@@ -137,23 +55,21 @@ add_action( 'woocommerce_shop_loop_item_title', 'x_woocommerce_template_loop_pro
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
 
 
-
-//
-// Get shop link.
-//
+// Get Shop Link
+// -------------
 
 function x_get_shop_link() {
 
-  $link = get_permalink( woocommerce_get_page_id( 'shop' ) );
+  $id   = ( function_exists( 'wc_get_page_id' ) ) ? wc_get_page_id( 'shop' ) : woocommerce_get_page_id( 'shop' );
+  $link = get_permalink( $id );
 
   return $link;
 
 }
 
 
-//
-// Columns and posts per page.
-//
+// Columns and Posts Per Page
+// --------------------------
 
 function x_woocommerce_shop_columns() {
   return x_get_option( 'x_woocommerce_shop_columns' );
@@ -169,17 +85,16 @@ function x_woocommerce_shop_posts_per_page() {
 add_filter( 'loop_shop_per_page', 'x_woocommerce_shop_posts_per_page' );
 
 
-//
-// Shop product thumbnails.
-//
+// Shop Product Thumbnails
+// -----------------------
 
 function x_woocommerce_shop_product_thumbnails() {
 
   GLOBAL $product;
 
   $id     = get_the_ID();
-  $thumb  = 'entry';
-  $rating = $product->get_rating_html();
+  $thumb  = 'shop_catalog';
+  $rating = ( function_exists( 'wc_get_rating_html' ) ) ? wc_get_rating_html( $product->get_average_rating() ) : $product->get_rating_html();
 
   woocommerce_show_product_sale_flash();
   echo '<div class="entry-featured">';
@@ -197,9 +112,8 @@ remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_
 add_action( 'woocommerce_before_shop_loop_item_title', 'x_woocommerce_shop_product_thumbnails', 10 );
 
 
-//
-// Shop item wrapper.
-//
+// Shop Item Wrapper
+// -----------------
 
 function x_woocommerce_before_shop_loop_item() {
   echo '<div class="entry-product">';
@@ -233,39 +147,15 @@ remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_ad
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 
 
-//
-// Remove sale badge.
-//
+// Remove Sale Badge
+// -----------------
 
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 
 
-//
-// Large thumbnail size.
-//
-
-function x_woocommerce_single_product_large_thumbnail_size() {
-  return 'entry';
-}
-
-add_filter( 'single_product_large_thumbnail_size', 'x_woocommerce_single_product_large_thumbnail_size' );
-
-
-//
-// Small thumbnail size.
-//
-
-function x_woocommerce_single_product_small_thumbnail_size() {
-  return 'shop_single';
-}
-
-add_filter( 'single_product_small_thumbnail_size', 'x_woocommerce_single_product_small_thumbnail_size' );
-
-
-//
-// Product wrapper.
-//
+// Product Wrapper
+// ---------------
 
 function x_woocommerce_before_single_product() {
   echo '<div class="entry-wrap"><div class="entry-content">';
@@ -279,9 +169,8 @@ add_action( 'woocommerce_before_single_product', 'x_woocommerce_before_single_pr
 add_action( 'woocommerce_after_single_product', 'x_woocommerce_after_single_product', 10 );
 
 
-//
-// Add/remove product tabs.
-//
+// Add/Remove Product Tabs
+// -----------------------
 
 function x_woocommerce_add_remove_product_tabs( $tabs ) {
 
@@ -308,9 +197,8 @@ add_filter( 'woocommerce_product_tabs', 'x_woocommerce_add_remove_product_tabs',
 // Cart
 // =============================================================================
 
-//
-// Get cart link.
-//
+// Get Cart Link
+// -------------
 
 function x_get_cart_link() {
 
@@ -321,9 +209,8 @@ function x_get_cart_link() {
 }
 
 
-//
-// No shipping available HTML.
-//
+// No Shipping Available HTML
+// --------------------------
 
 function x_woocommerce_cart_no_shipping_available_html() {
 
@@ -338,21 +225,16 @@ function x_woocommerce_cart_no_shipping_available_html() {
 add_filter( 'woocommerce_cart_no_shipping_available_html', 'x_woocommerce_cart_no_shipping_available_html' );
 
 
-//
-// Cart actions.
-//
+// Cart Actions
+// ------------
+// 01. Check based off of wc_coupons_enabled(), which is only available in
+//     WooCommerce v2.5+.
 
 function x_woocommerce_cart_actions() {
 
   $output = '';
 
-
-  //
-  // Check based off of wc_coupons_enabled(), which is only available in
-  // WooCommerce v2.5+.
-  //
-
-  if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) {
+  if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) { // 01
     $output .= '<input type="submit" class="button" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
   }
 
@@ -361,6 +243,23 @@ function x_woocommerce_cart_actions() {
 }
 
 add_action( 'woocommerce_cart_actions', 'x_woocommerce_cart_actions' );
+
+
+// Cross Sells
+// -----------
+
+function x_woocommerce_cross_sells_columns() {
+  return x_get_option( 'x_woocommerce_cart_cross_sells_columns' );
+}
+
+add_filter( 'woocommerce_cross_sells_columns', 'x_woocommerce_cross_sells_columns' );
+
+
+function x_woocommerce_cross_sells_count() {
+  return x_get_option( 'x_woocommerce_cart_cross_sells_count' );
+}
+
+add_filter( 'woocommerce_cross_sells_total', 'x_woocommerce_cross_sells_count' );
 
 
 
@@ -409,9 +308,8 @@ add_action( 'woocommerce_after_single_product_summary', 'x_woocommerce_output_up
 // Navbar
 // =============================================================================
 
-//
-// Cart.
-//
+// Cart
+// ----
 
 if ( ! function_exists( 'x_woocommerce_navbar_cart' ) ) :
   function x_woocommerce_navbar_cart() {
@@ -449,14 +347,14 @@ if ( ! function_exists( 'x_woocommerce_navbar_cart' ) ) :
 endif;
 
 
-//
-// Cart fragment.
-//
+// Cart Fragment
+// -------------
 
 if ( ! function_exists( 'x_woocommerce_navbar_cart_fragment' ) ) :
   function x_woocommerce_navbar_cart_fragment( $fragments ) {
 
     $fragments['div.x-cart'] = x_woocommerce_navbar_cart();
+
     return $fragments;
 
   }
@@ -464,9 +362,8 @@ if ( ! function_exists( 'x_woocommerce_navbar_cart_fragment' ) ) :
 endif;
 
 
-//
-// Outputs a navigation item with the cart.
-//
+// Output Cart
+// -----------
 
 if ( ! function_exists( 'x_woocommerce_navbar_menu_item' ) ) :
   function x_woocommerce_navbar_menu_item( $items, $args ) {
@@ -513,3 +410,30 @@ if ( ! function_exists( 'x_woocommerce_navbar_cart_ajax_notification' ) ) :
   }
   add_action( 'x_before_site_end', 'x_woocommerce_navbar_cart_ajax_notification' );
 endif;
+
+
+
+// New Cranium Stuff (To Be Organized Later)
+// =============================================================================
+
+// Fragments
+// ---------
+
+function x_woocommerce_fragment_total() {
+  return '<span data-x-wc-fragment="total">' . WC()->cart->get_cart_total() . '</span>';
+}
+
+function x_woocommerce_fragment_count() {
+  return '<span data-x-wc-fragment="count">' . WC()->cart->cart_contents_count . '</span>';
+}
+
+function x_woocommerce_fragments( $fragments ) {
+
+  $fragments['[data-x-wc-fragment="total"]'] = x_woocommerce_fragment_total();
+  $fragments['[data-x-wc-fragment="count"]'] = x_woocommerce_fragment_count();
+
+  return $fragments;
+
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'x_woocommerce_fragments' );

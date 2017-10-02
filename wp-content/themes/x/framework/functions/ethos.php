@@ -339,7 +339,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
         $rating = esc_attr( get_comment_meta( $GLOBALS['comment']->comment_ID, 'rating', true ) );
       endif;
     ?>
-    <li id="li-comment-<?php comment_ID(); ?>" itemprop="review" itemscope itemtype="http//schema.org/Review" <?php comment_class(); ?>>
+    <li id="li-comment-<?php comment_ID(); ?>" itemprop="review" itemscope itemtype="http://schema.org/Review" <?php comment_class(); ?>>
       <article id="comment-<?php comment_ID(); ?>" class="comment">
         <?php
         printf( '<div class="x-comment-img">%1$s %2$s</div>',
@@ -351,7 +351,7 @@ if ( ! function_exists( 'x_ethos_comment' ) ) :
           <header class="x-comment-header">
             <div class="x-comment-meta">
               <?php
-              printf( '<a href="%1$s" class="x-comment-time"><time itemprop="datePublished datetime="%2$s">%3$s</time></a>',
+              printf( '<a href="%1$s" class="x-comment-time"><time itemprop="datePublished" datetime="%2$s">%3$s</time></a>',
                 esc_url( get_comment_link( $comment->comment_ID ) ),
                 get_comment_time( 'c' ),
                 sprintf( __( '%1$s', '__x__' ),

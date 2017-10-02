@@ -15,11 +15,11 @@
 //   04. Localization
 // =============================================================================
 
-
 // Load Class
 // =============================================================================
 
 require_once( X_TEMPLATE_PATH . '/framework/tco/tco.php' );
+
 
 
 // Accessor
@@ -29,15 +29,27 @@ function x_tco() {
   return TCO_1_0::instance();
 }
 
+function x_tco_product_logo( $product, $class = '', $style = '' ) {
+
+  $tco = x_tco();
+
+  if ( is_callable( array( $tco, 'product_logo') ) ) {
+    return x_tco()->product_logo( $product, $class, $style );
+  }
+
+  return x_tco()->x_logo( $class, $style );
+
+}
+
+
 
 // Initialization
 // =============================================================================
 
 function x_tco_init() {
 
-  //
   // Init
-  //
+  // ----
 
   $tco = x_tco();
 
@@ -45,9 +57,9 @@ function x_tco_init() {
     'url' => X_TEMPLATE_URL . '/framework/tco/'
   ) );
 
-  //
+
   // Attach Localization Filters
-  //
+  // ---------------------------
 
   add_filter( 'tco_localize_' . $tco->handle( 'admin-js' ), 'x_tco_localize_admin_js' );
   add_filter( 'tco_localize_' . $tco->handle( 'updates' ), 'x_tco_localize_updates' );
@@ -56,6 +68,7 @@ function x_tco_init() {
 
 add_action( 'init', 'x_tco_init' );
 add_action( 'admin_init', 'x_tco_init' );
+
 
 
 // Localization
@@ -77,7 +90,7 @@ function x_tco_localize_admin_js( $strings ) {
 function x_tco_localize_updates( $strings ) {
 
   $strings = array_merge( $strings, array(
-    'connection-error' => __( 'Could not establish connection. For assistance, please start by reviewing our article on troubleshooting <a href="https://community.theme.co/kb/connection-issues/">connection issues.</a>', '__x__' )
+    'connection-error' => __( 'Could not establish connection. For assistance, please start by reviewing our article on troubleshooting <a href="https://theme.co/apex/kb/connection-issues/">connection issues.</a>', '__x__' )
   ) );
 
   return $strings;

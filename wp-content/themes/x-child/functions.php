@@ -176,7 +176,7 @@ function x_woocommerce_cart_actions_eb() {
 // WooCommerce v2.5+.
 //
 if ( apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) ) ) {
-	$output .= '<input type="submit" class="x-btn x-btn-regular x-btn-block" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
+	$output .= '<input type="submit" class="button" name="apply_coupon" value="' . esc_attr__( 'Apply Coupon', '__x__' ) . '">';
 }
 
 echo $output;
@@ -206,6 +206,9 @@ function custom_override_checkout_fields( $fields ) {
 
      return $fields;
 }
+
+//Remove cross sell
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 
 // Do Not Remove Woocommerce Plugin Settings
