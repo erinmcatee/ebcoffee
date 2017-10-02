@@ -308,8 +308,8 @@ header.highlight
 
 @media (max-width: 767px) {
 	.Icon {
-		height: 6rem;
-		width: 6rem;
+		height: 5rem;
+		width: 5rem;
 	}
 	.x-brand {
 		float: left;
