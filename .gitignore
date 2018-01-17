@@ -18,6 +18,8 @@ wp-content/cache/
 wp-content/backups/
 wp-content/advanced-cache.php
 wp-content/wp-cache-config.php
+wp-content/mu-plugins/
+wp-content/themes/x/
 **/node_modules/
 sitemap.xml
 sitemap.xml.gz

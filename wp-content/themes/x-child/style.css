@@ -216,6 +216,11 @@ body.woocommerce input.qty {
 	float: right !important;
 }
 
+.woocommerce-checkout form abbr[title], 
+.woocommerce-checkout forma cronym[title] {
+	text-decoration: none;
+}
+
 .woocommerce-checkout-review-order,
 .shop_table.order_details,
 .shop_table.customer_details {
@@ -233,6 +238,11 @@ header.highlight
 .woocommerce-checkout ul.order_details {
 	padding: 1rem;
     background: white;
+}
+
+.woocommerce-billing-fields #billing_country_field,
+.woocommerce-shipping-fields #shipping_country_field {
+	display: none;
 }
 
 .checkout-h3-bg {

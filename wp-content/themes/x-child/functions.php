@@ -197,7 +197,7 @@ function wc_npr_filter_phone( $address_fields ) {
 // Change login error for username/email
 add_filter('login_errors', create_function('$a', "return '<b>Error:</b> Email address is required.';"));
 
-// Remove Country from checkout
+/* // Remove Country from checkout 
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
 // Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields( $fields ) {
@@ -205,7 +205,7 @@ function custom_override_checkout_fields( $fields ) {
      unset($fields['shipping']['shipping_country']);
 
      return $fields;
-}
+} */
 
 //Remove cross sell
 remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
