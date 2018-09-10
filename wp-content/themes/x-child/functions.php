@@ -51,6 +51,7 @@ add_action('wp_head', 'google_analytics_tracking_code');
 
 function draw_ebcoffee_map() { 
 	wp_enqueue_script('delivery-map', get_stylesheet_directory_uri() . '/js/delivery-map.js', array('jquery'), '', '', true);
+	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css' );
 } 
 add_action('wp_enqueue_scripts', 'draw_ebcoffee_map');
 
@@ -78,11 +79,11 @@ add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 // Favicons
 // =============================================================================
 function eb_favicon_links() {
-    echo '<link rel="apple-touch-icon" sizes="180x180" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/apple-touch-icon.png">' . "\n";
-	echo '<link rel="icon" type="image/png" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/favicon-32x32.png" sizes="32x32">' . "\n";
-	echo '<link rel="icon" type="image/png" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/favicon-16x16.png" sizes="16x16">' . "\n";
-	echo '<link rel="manifest" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/manifest.json">' . "\n";
-	echo '<link rel="mask-icon" href="https://d3e5gn4h5taomv.cloudfront.net/favicons/safari-pinned-tab.svg" color="#5bbad5">' . "\n";
+    echo '<link rel="apple-touch-icon" sizes="180x180" href="' . get_stylesheet_directory_uri() . '/favicons/apple-touch-icon.png">' . "\n";
+	echo '<link rel="icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/favicons/favicon-32x32.png" sizes="32x32">' . "\n";
+	echo '<link rel="icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/favicons/favicon-16x16.png" sizes="16x16">' . "\n";
+	echo '<link rel="manifest" href="' . get_stylesheet_directory_uri() . '/favicons/manifest.json">' . "\n";
+	echo '<link rel="mask-icon" href="' . get_stylesheet_directory_uri() . '/favicons/safari-pinned-tab.svg" color="#5bbad5">' . "\n";
 	echo '<meta name="theme-color" content="#ffffff">' . "\n";
 }
 add_action( 'wp_head', 'eb_favicon_links' );
@@ -130,8 +131,8 @@ add_shortcode('year', 'year_shortcode');
  *
  * @subpackage	Product
  */
-function woocommerce_template_single_eb_roast_level() {
-	wc_get_template( 'single-product/stock-message.php' );
+function woocommerce_template_single_eb_roast_meta() {
+	wc_get_template( 'single-product/roast-meta.php' );
 }
 /** 
  * Output the stock message if populated. Relies on ACF.
@@ -139,8 +140,9 @@ function woocommerce_template_single_eb_roast_level() {
  * @subpackage	Product
  */
 function woocommerce_template_single_eb_stock_message() {
-	wc_get_template( 'single-product/roast-level.php' );
+	wc_get_template( 'single-product/stock-message.php' );
 }
+
 
 //remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 50 );
@@ -148,12 +150,13 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
 add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 5 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 1 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_eb_roast_meta', 5 );
 
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_level', 20 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 19 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_meta', 25 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 24 );
 
-add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_eb_roast_level', 1 );
+
 
 
 
@@ -231,7 +234,34 @@ function get_roast_tag($atts) {
 	
 	$roast_level = $a['level'];
 	
-	return '<mark class=" x-highlight '. $roast_level .'">'. $roast_level .'</mark>';
+	switch ($roast_level) {
+		case 0:
+			return '<i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;
+		case 1:
+			return '<i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;
+		case 2:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;		
+		case 3:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;		
+		case 4:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;		
+		case 5:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i><i class="far fa-circle"></i>';
+			break;		
+		case 6:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="far fa-circle"></i>';
+			break;		
+		case 7:
+			return '<i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i>';
+			break;		
+		default:
+			return '';
+	}
 }
 add_shortcode('roast', 'get_roast_tag');
 
