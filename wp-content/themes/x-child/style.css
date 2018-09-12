@@ -220,6 +220,10 @@ body.woocommerce input.qty {
 	margin:1rem 0 !important;
 }
 
+.woocommerce .products h3 a {
+	color:rgb(251,75,48);
+}
+
 .cart_totals td {
 	text-align: right;
 }
@@ -236,13 +240,19 @@ body.woocommerce input.qty {
 	width:auto;
 }
 
-.woocommerce-account form h3#ship-to-different-address, .woocommerce-checkout form h3#ship-to-different-address {
+.woocommerce-account form h3#ship-to-different-address, .woocommerce-checkout form h3#ship-to-different-address, .woocommerce-account form h3:first-child, .woocommerce-checkout form h3 {
 	margin-top: 0 !important;
+	font-weight: 500;
 }
 
 .woocommerce .cart .actions .coupon {
 	width: 37.6% !important;
 	float: right !important;
+}
+
+.woocommerce-checkout .checkout-column {
+	background: white;
+	padding:2% 3%;
 }
 
 .woocommerce-checkout form abbr[title], 

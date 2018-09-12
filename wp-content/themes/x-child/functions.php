@@ -159,8 +159,6 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_e
 
 
 
-
-
 // Cart actions.
 //First remove x-theme function, then rewrite it.
 function remove_x_woocommerce_cart_actions() {
