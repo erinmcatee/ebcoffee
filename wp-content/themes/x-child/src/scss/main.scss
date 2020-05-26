@@ -1,0 +1,24 @@
+/*
+
+Theme Name: X &ndash; Child Theme / EB.COFFEE
+Theme URI: http://theme.co/x/
+Author: Emac
+Author URI: http://theme.co/
+Description: Child theme for EB.COFFEE.
+Version: 1.2.0
+Template: x
+
+*/
+
+// Modules and Variables
+@import "partials/base";
+
+// Partials
+@import "partials/reset";
+@import "partials/buttons";
+@import "partials/formelements";
+@import "partials/helpers";
+@import "partials/structure";
+@import "partials/grids";
+
+// Third-party

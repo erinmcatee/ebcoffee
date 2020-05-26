@@ -23,10 +23,10 @@ if ( get_field('roast_level') && get_field('roast_level') != 'not_roast') :
 	<?php 
 	if( get_field('roast_level') ): ?>
 		<tr>
-				<td><span class="w-600"><?php _e( 'Roast Level', '__x__' ); ?></span></td>
+				<td><span class="w-600"><?php _e( 'Roast', '__x__' ); ?></span></td>
 				<td>
 					<div class="fit-content">
-						<span class="roast-level small"><?php echo do_shortcode( '[roast level='.$roast_value.']' ); ?></span><div class="roast-light"><?php _e( 'Light', '__x__' ); ?></div><div class="roast-dark"><?php _e( 'Dark', '__x__' ); ?></div>
+						<span class="roast-level small"><?php echo do_shortcode( '[roast level='.$roast_value.']' ); ?></span><div class="roast-bright"><?php _e( 'Bright', '__x__' ); ?></div><div class="roast-bold"><?php _e( 'Bold', '__x__' ); ?></div>
 					</div>
 				</td>
 		</tr>

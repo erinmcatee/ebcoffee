@@ -50,7 +50,7 @@ add_action('wp_head', 'google_analytics_tracking_code');
 // =============================================================================
 
 function draw_ebcoffee_map() { 
-	wp_enqueue_script('delivery-map', get_stylesheet_directory_uri() . '/js/delivery-map.js', array('jquery'), '', '', true);
+	//wp_enqueue_script('delivery-map', get_stylesheet_directory_uri() . '/js/delivery-map.js', array('jquery'), '', '', true);
 	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css' );
 } 
 add_action('wp_enqueue_scripts', 'draw_ebcoffee_map');
@@ -142,21 +142,6 @@ function woocommerce_template_single_eb_roast_meta() {
 function woocommerce_template_single_eb_stock_message() {
 	wc_get_template( 'single-product/stock-message.php' );
 }
-
-
-//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 50 );
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 60 );
-
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_excerpt', 1 );
-add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_single_eb_roast_meta', 5 );
-
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_meta', 25 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 24 );
-
-
 
 
 // Cart actions.
@@ -263,4 +248,6 @@ function get_roast_tag($atts) {
 }
 add_shortcode('roast', 'get_roast_tag');
 
-
+// Required includes
+require 'inc/subscriptions.php';
+require 'inc/woo-actions.php';

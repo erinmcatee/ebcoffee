@@ -10,31 +10,28 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.0.0
+ * @see https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce/Templates
+ * @version 3.8.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_login_reminder' ) ) {
 	return;
 }
 
 $info_message  = apply_filters( 'woocommerce_checkout_login_message', __( 'Returning customer?', 'woocommerce' ) );
-$info_message .= ' <a href="#" class="showlogin">' . __( 'Click here to login', 'woocommerce' ) . '</a>';
+$info_message .= ' <a href="#" class="showlogin">' . esc_html__( 'Click here to login', 'woocommerce' ) . '</a>';
 wc_print_notice( $info_message, 'notice' );
 ?>
 
 <?php
 	woocommerce_login_form(
 		array(
-			'message'  => __( 'If you have shopped with us before, please login. If you are a new customer, please proceed to Billing &amp; Shipping.', 'woocommerce' ),
-			'redirect' => wc_get_page_permalink( 'checkout' ),
-			'hidden'   => true
+			'message'  => esc_html__( 'If you have shopped with us before, please login. If you are a new customer, please proceed to Billing &amp; Shipping.', 'woocommerce' ),
+			'redirect' => wc_get_checkout_url(),
+			'hidden'   => true,
 		)
 	);
 ?>
