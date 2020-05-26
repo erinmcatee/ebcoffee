@@ -178,10 +178,10 @@ body.woocommerce-checkout .select2-chosen {
   .woocommerce .cart.shop_table .product-remove .remove:before {
     font-family: "fontawesome";
     content: "\f2ed"; }
-  .woocommerce .cart.shop_table .product_thumbnail {
-    width: 10%;
+  .woocommerce .cart.shop_table .product-thumbnail {
+    max-width: 10rem;
     padding: .5em .625em; }
-    .woocommerce .cart.shop_table .product_thumbnail img {
+    .woocommerce .cart.shop_table .product-thumbnail img {
       width: auto; }
   .woocommerce .cart .actions .coupon {
     width: 37.6% !important;
@@ -203,6 +203,13 @@ body.woocommerce-checkout .select2-chosen {
 .woocommerce-checkout .checkout-column {
   background: white;
   padding: 2% 3%; }
+.woocommerce-checkout .payment_box {
+  margin-left: 18px; }
+  .woocommerce-checkout .payment_box .wc-payment-form label {
+    padding-left: 0 !important; }
+  .woocommerce-checkout .payment_box .wc-stripe-elements-field {
+    padding: .8rem .65rem;
+    height: 2.65em; }
 
 .woocommerce-checkout form abbr[title],
 .woocommerce-checkout forma cronym[title] {
