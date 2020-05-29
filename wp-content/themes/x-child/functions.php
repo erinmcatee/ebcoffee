@@ -248,6 +248,15 @@ function get_roast_tag($atts) {
 }
 add_shortcode('roast', 'get_roast_tag');
 
+
+/**
+ * Output the (excerpt) - different from short description.
+ */
+function eb_template_single_excerpt() {
+	wc_get_template( 'single-product/excerpt.php' );
+}
+
+
 // Required includes
 require 'inc/subscriptions.php';
 require 'inc/woo-actions.php';
