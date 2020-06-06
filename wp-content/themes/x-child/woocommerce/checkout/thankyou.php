@@ -16,7 +16,7 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-?>
+
 
 if ( $order ) : ?>
 
