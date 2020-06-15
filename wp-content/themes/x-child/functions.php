@@ -197,6 +197,19 @@ function custom_override_checkout_fields( $fields ) {
 remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 
+// Updated gift message field
+add_filter( 'woocommerce_checkout_fields', 'eb_custom_checkout_fields');
+function eb_custom_checkout_fields( $fields ) {
+     $fields['order']['order_comments']['placeholder'] = 'Include a personal message!';
+     $fields['order']['order_comments']['label'] = 'Gift Message';
+     
+     unset($fields['billing']['billing_company']);
+     unset($fields['shipping']['shipping_company']);
+     
+     return $fields;
+}
+
+
 // Do Not Remove Woocommerce Plugin Settings
 // =============================================================================
 function x_woocommerce_donot_remove_plugin_setting(){
@@ -258,5 +271,6 @@ function eb_template_single_excerpt() {
 
 
 // Required includes
-require 'inc/subscriptions.php';
+//require 'inc/subscriptions.php';
 require 'inc/woo-actions.php';
+//require 'inc/acf.php';
