@@ -194,6 +194,17 @@ body.woocommerce-checkout {
 	}
 	
 	div.product {
+		&.product-type-variable-subscription {
+			#wooswipe {
+				display: none;
+			}
+			
+			.summary {
+				float: none;
+				width: 100%;
+			}			
+		}
+		
 		.summary {
 			.single_variation {
 				text-align: left;
@@ -202,6 +213,51 @@ body.woocommerce-checkout {
 					
 					> .amount {
 						color: color(charcoal);
+					}
+				}				
+			}
+			
+			.subscription_variation {
+				
+				padding: 1rem;
+				background-color: color(white);
+				
+				.single_variation {
+					.bag-price {
+						> .amount {
+							font-size: 1.5rem;
+							color: color(charcoal);
+							font-weight: 600;
+						}
+						
+						> .details {
+							color: color(charcoal);
+						}
+					}
+					
+					.savings-badge {
+						width: fit-content;
+						padding: .6rem;
+						margin: .5rem 0;
+						
+						.amount {
+							font-size: 1.1rem;
+							font-weight: 600;
+						}
+					}
+					
+					.price {
+						margin-bottom: 0;
+						
+						 > .amount {
+							 font-size: 1rem !important;
+						 }
+					}
+					
+					.total-shipping {
+						margin-bottom: 1rem;
+						display: block;
+						font-size: .85rem;
 					}
 				}
 			}
@@ -260,6 +316,10 @@ body.woocommerce-checkout {
 				float: right !important;				
 			}
 		}
+	}
+	
+	.product_meta {
+		font-size: 	.8rem;
 	}
 }
 

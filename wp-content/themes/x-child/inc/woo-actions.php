@@ -1,4 +1,4 @@
-<?php 
+<?php 	
 //remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 50 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 60 );
@@ -14,4 +14,3 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_sing
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_meta', 25 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 24 );
-

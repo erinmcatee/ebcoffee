@@ -20,9 +20,7 @@ global $product;
 		 */
 		do_action( 'woocommerce_before_add_to_cart_quantity' );
     ?>
-
-    <div class="label">QTY</div>
-
+	
     <?php
     woocommerce_quantity_input( array(
         'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),

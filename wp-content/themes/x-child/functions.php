@@ -19,63 +19,6 @@
 add_filter( 'x_enqueue_parent_stylesheet', '__return_true' );
 
 
-
-// Google Analytics
-// =============================================================================
-
-// Include the Google Analytics Tracking Code (ga.js)
-// @ https://developers.google.com/analytics/devguides/collection/gajs/
-function google_analytics_tracking_code(){ ?>
-
-		<script>
-		
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-77591609-1', 'auto');
-		  ga('send', 'pageview');
-		
-		</script>
-		
-<?php
-}
-
-// include GA tracking code before the closing head tag
-add_action('wp_head', 'google_analytics_tracking_code');
-
-
-// Include the Google Maps API script & draw map
-// =============================================================================
-
-function draw_ebcoffee_map() { 
-	//wp_enqueue_script('delivery-map', get_stylesheet_directory_uri() . '/js/delivery-map.js', array('jquery'), '', '', true);
-	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css' );
-} 
-add_action('wp_enqueue_scripts', 'draw_ebcoffee_map');
-
-
-//Google maps API script load, draw map
-function google_maps_api(){
-	wp_register_script( 'google-map-api', 'https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyD8gAHh9c4lPmqyfte7kfpPfy0KK1j7Nwg&callback=initMap', array(), '1.0.0', true );
-	if ( is_page( 'delivery-range' ) ) {
-    	wp_enqueue_script( 'google-map-api' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'google_maps_api' );
-
-
-//to add async & defer to loading of scripts
-// =============================================================================
-function add_async_attribute($tag, $handle) {
-    if ( 'google-map-api' !== $handle )
-        return $tag;
-    return str_replace( ' src', ' async defer src', $tag );
-}
-add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
-
-
 // Favicons
 // =============================================================================
 function eb_favicon_links() {
@@ -93,19 +36,6 @@ add_action( 'wp_head', 'eb_favicon_links' );
 function x_social_meta() {
 	return;
 }
-
-
-// Include fonts in head
-// =============================================================================
-function google_fonts() {
-	$query_args = array(
-		'family' => 'Pacifico',
-		'subset' => 'latin,latin-ext'
-	);
-	wp_register_style( 'google_fonts', add_query_arg( $query_args, "//fonts.googleapis.com/css" ), array(), null );
-}      
-add_action('wp_enqueue_scripts', 'google_fonts');
-
 
 // ACF options page
 // =============================================================================
@@ -271,6 +201,8 @@ function eb_template_single_excerpt() {
 
 
 // Required includes
-//require 'inc/subscriptions.php';
+require 'inc/enqueue.php';
+require 'inc/subscriptions.php';
 require 'inc/woo-actions.php';
-//require 'inc/acf.php';
+require 'inc/acf.php';
+require 'inc/fooevents.php';
