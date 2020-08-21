@@ -240,7 +240,7 @@ body.woocommerce input.qty {
 body.woocommerce h1,
 body.woocommerce-page h1,
 body.woocommerce-checkout h1 {
-  margin: 0 !important; }
+  margin: 0 0 2rem 0 !important; }
 
 body.woocommerce-checkout .select2-chosen {
   height: 2.65em !important;
