@@ -319,7 +319,7 @@ body.woocommerce-checkout .select2-chosen {
 
 .woocommerce-cart .cart .x-btn {
   margin: 1rem 0 !important; }
-.woocommerce-cart .cart .component_table_item .product-thumbnail a {
+.woocommerce-cart .cart .component_table_item .product-thumbnail a, .woocommerce-cart .cart .component_table_item .product-thumbnail img {
   display: none !important; }
 .woocommerce-cart .cart .component_table_item .product-name .component_table_item_indent {
   padding-left: 0; }
