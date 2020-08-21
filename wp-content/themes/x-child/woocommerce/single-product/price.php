@@ -21,6 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-if ( !$product->is_type( 'variable' ) ) : ?>
+if ( !($product->is_type( 'variable' ) || $product->is_type('composite')) ) : ?>
 	<p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?>"><?php echo $product->get_price_html(); ?></p>
 <?php endif; ?>

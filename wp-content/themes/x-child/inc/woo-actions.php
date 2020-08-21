@@ -14,3 +14,8 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_sing
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_roast_meta', 25 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_eb_stock_message', 24 );
+
+add_action('init','remove_hooks');
+function remove_hooks(){
+    remove_action( 'woocommerce_composite_summary_widget_content', 'wc_cp_summary_widget_price', 20, 2 );
+}

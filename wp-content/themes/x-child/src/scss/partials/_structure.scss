@@ -149,6 +149,14 @@ body {
 		.composited_product_title_wrapper {
 			padding-top: 0;
 		}
+		
+		&.composite_component {
+			.composited_product_details_wrapper {
+				td.label {
+					display: none;
+				}
+			}
+		}
 	}
 }
 

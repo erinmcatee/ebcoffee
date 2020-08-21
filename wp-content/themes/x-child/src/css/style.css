@@ -100,6 +100,10 @@ h1 {
     .subscription-variations .attribute .value.four-up {
       grid-template-columns: 1fr 1fr 1fr 1fr; }
 
+/* WVCF7 Form Stuff */
+.wpcf7-response-output {
+  display: none; }
+
 .small {
   font-size: 0.9em !important; }
 
@@ -208,6 +212,8 @@ body {
   padding-bottom: 1rem; }
 .product-type-composite .component .composited_product_title_wrapper {
   padding-top: 0; }
+.product-type-composite .component.composite_component .composited_product_details_wrapper td.label {
+  display: none; }
 
 .roast-meta {
   background-color: white; }
