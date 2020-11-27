@@ -19,3 +19,10 @@ add_action('init','remove_hooks');
 function remove_hooks(){
     remove_action( 'woocommerce_composite_summary_widget_content', 'wc_cp_summary_widget_price', 20, 2 );
 }
+
+/**
+ * @snippet       Always Show Variation Price @ WooCommerce Single Product
+ * @how-to        Get CustomizeWoo.com FREE
+ * @compatible    WooCommerce 3.8
+ */
+add_filter( 'woocommerce_show_variation_price', '__return_true' );
