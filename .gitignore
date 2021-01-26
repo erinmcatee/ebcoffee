@@ -1,4 +1,5 @@
 .htaccess
+*.txt
 wp-admin/
 wp-includes/
 wp-config.php
