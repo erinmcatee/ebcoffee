@@ -1,0 +1,341 @@
+# Translation of Plugins - Redirection - Stable (latest release) in Romanian
+# This file is distributed under the same license as the Plugins - Redirection - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-19 10:02:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n == 0 || n % 100 >= 2 && n % 100 <= 19) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha\n"
+"Language: ro\n"
+"Project-Id-Version: Plugins - Redirection - Stable (latest release)\n"
+
+#: redirection-strings.php:492
+msgid "GDPR / Privacy information"
+msgstr "Informații despre GDPR/confidențialitate"
+
+#: redirection-strings.php:276
+msgid "Search"
+msgstr "Caută"
+
+#: redirection-strings.php:133 redirection-strings.php:290
+#: redirection-strings.php:331
+msgid "Cancel"
+msgstr "Anulare"
+
+#: redirection-strings.php:132 redirection-strings.php:289
+#: redirection-strings.php:576
+msgid "Save"
+msgstr "Salvează"
+
+#: redirection-strings.php:273 redirection-strings.php:283
+#: redirection-strings.php:365 redirection-strings.php:386
+#: redirection-strings.php:399 redirection-strings.php:402
+#: redirection-strings.php:435 redirection-strings.php:447
+#: redirection-strings.php:524 redirection-strings.php:564
+msgid "Delete"
+msgstr "Șterge"
+
+#: redirection-admin.php:146
+msgid "Settings"
+msgstr "Setări"
+
+#: redirection-strings.php:356
+msgid "Download"
+msgstr "Descarcă"
+
+#: redirection-strings.php:259 redirection-strings.php:270
+#: redirection-strings.php:280 redirection-strings.php:287
+msgid "Name"
+msgstr "Nume"
+
+#: redirection-strings.php:369 redirection-strings.php:411
+#: redirection-strings.php:516 redirection-strings.php:591
+msgid "URL"
+msgstr "URL"
+
+#: redirection-strings.php:341
+msgid "Import"
+msgstr "Import"
+
+#: redirection-strings.php:82 redirection-strings.php:311
+msgid "Options"
+msgstr "Opțiuni"
+
+#: redirection-strings.php:83 redirection-strings.php:312
+msgid "Support"
+msgstr "Suport"
+
+#. Plugin Name of the plugin
+#: redirection-strings.php:249
+msgid "Redirection"
+msgstr "Redirecționare"
+
+#: redirection-strings.php:364 redirection-strings.php:373
+#: redirection-strings.php:392 redirection-strings.php:398
+#: redirection-strings.php:414 redirection-strings.php:633
+msgid "IP"
+msgstr "IP"
+
+#: redirection-strings.php:79
+msgid "Log"
+msgstr "Jurnal"
+
+#: redirection-strings.php:381 redirection-strings.php:423
+#: redirection-strings.php:428
+msgid "Delete All"
+msgstr "Șterge tot"
+
+#: redirection-strings.php:260 redirection-strings.php:268
+#: redirection-strings.php:272 redirection-strings.php:288
+msgid "Module"
+msgstr "Extensie"
+
+#: redirection-strings.php:77 redirection-strings.php:307
+msgid "Groups"
+msgstr "Grupuri"
+
+#: redirection-strings.php:131 redirection-strings.php:520
+#: redirection-strings.php:540
+msgid "Group"
+msgstr "Grup"
+
+#: redirection-strings.php:363 redirection-strings.php:371
+#: redirection-strings.php:397 redirection-strings.php:413
+#: redirection-strings.php:613
+msgid "User Agent"
+msgstr "Agent utilizator"
+
+#: redirection-strings.php:604
+msgid "Logged In"
+msgstr "Autentificat"
+
+#: redirection-strings.php:76 redirection-strings.php:262
+#: redirection-strings.php:271
+msgid "Redirects"
+msgstr "Redirecționări"
+
+#: redirection-strings.php:362 redirection-strings.php:370
+#: redirection-strings.php:396 redirection-strings.php:412
+#: redirection-strings.php:640
+msgid "Referrer"
+msgstr "Referent"
+
+#: redirection-strings.php:606
+msgid "Logged Out"
+msgstr "Dezautentificat"
+
+#: redirection-strings.php:559
+msgid "Add new redirection"
+msgstr "Adaugă redirecționare nouă"
+
+#: redirection-strings.php:136
+msgid "Match"
+msgstr "Potrivire"
+
+#: redirection-strings.php:278
+msgid "Add Group"
+msgstr "Adaugă grup"
+
+#: redirection-strings.php:279
+msgid "Use groups to organise your redirects. Groups are assigned to a module, which affects how the redirects in that group work. If you are unsure then stick to the WordPress module."
+msgstr "Folosește grupuri pentru a-ți organiza redirecționările. Grupurile sunt atribuite unei extensii, care afectează modul în care redirecționările din acel grup funcționează. Dacă nu ești sigur, atunci lipește extensia WordPress."
+
+#: redirection-strings.php:460
+msgid "No logs"
+msgstr "Niciun jurnal"
+
+#: redirection-strings.php:461 redirection-strings.php:468
+msgid "A day"
+msgstr "O zi"
+
+#: redirection-strings.php:462 redirection-strings.php:469
+msgid "A week"
+msgstr "O săptămână"
+
+#: redirection-strings.php:463
+msgid "A month"
+msgstr "O lună"
+
+#: redirection-strings.php:464
+msgid "Two months"
+msgstr "Două luni"
+
+#: redirection-strings.php:485
+msgid "I'm a nice person and I have helped support the author of this plugin"
+msgstr "Sunt o persoană de treabă și am sprijinit autorul acestui modul"
+
+#: redirection-strings.php:486
+msgid "Redirect Logs"
+msgstr "Jurnale redirecționare"
+
+#: redirection-strings.php:487 redirection-strings.php:489
+msgid "(time to keep logs for)"
+msgstr "(perioadă de păstrare a jurnalelor)"
+
+#: redirection-strings.php:488
+msgid "404 Logs"
+msgstr "Jurnale 404"
+
+#: redirection-strings.php:494
+msgid "RSS Token"
+msgstr "Token RSS"
+
+#: redirection-strings.php:495
+msgid "A unique token allowing feed readers access to Redirection log RSS (leave blank to auto-generate)"
+msgstr "Un token unic care permite accesul fluxului de cititori la jurnalul RSS de redirecționare (lasă necompletat pentru generare automată)"
+
+#: redirection-strings.php:505
+msgid "Auto-generate URL"
+msgstr "URL generat automat"
+
+#: redirection-strings.php:445
+msgid "Delete Redirection"
+msgstr "Șterge Redirecționare"
+
+#: redirection-strings.php:446
+msgid "Selecting this option will delete all redirections, all logs, and any options associated with the Redirection plugin.  Make sure this is what you want to do."
+msgstr "Selectarea acestei opțiuni va șterge toate redirecționările, toate jurnalele și orice opțiuni asociate cu modulul Redirecționare. Asigură-te că asta vrei să faci."
+
+#: redirection-strings.php:80
+msgid "404s"
+msgstr "Erori 404"
+
+#: redirection-admin.php:331
+msgid "Redirection Support"
+msgstr "Suport pentru Redirecționare"
+
+#. Description of the plugin
+msgid "Manage all your 301 redirects and monitor 404 errors"
+msgstr "Administrează-ți toate redirecționările 301 și monitorizează erorile 404"
+
+#: redirection-strings.php:124 redirection-strings.php:619
+#: redirection-strings.php:623 redirection-strings.php:631
+#: redirection-strings.php:642
+msgid "Regex"
+msgstr "Expresie uzuală"
+
+#: redirection-strings.php:89 matches/url.php:7
+msgid "URL only"
+msgstr "Numai URL"
+
+#: redirection-strings.php:205 redirection-strings.php:361
+#: redirection-strings.php:612
+msgid "Target URL"
+msgstr "URL de destinație"
+
+#: redirection-strings.php:90 matches/login.php:8
+msgid "URL and login status"
+msgstr "URL și stare autentificare"
+
+#: redirection-strings.php:103
+msgid "Pass-through"
+msgstr "Trece prin"
+
+#: redirection-strings.php:102
+msgid "Redirect to random post"
+msgstr "Redirecționează către articol aleatoriu"
+
+#: redirection-strings.php:101
+msgid "Redirect to URL"
+msgstr "Redirecționează către URL"
+
+#: redirection-strings.php:284
+msgid "View Redirects"
+msgstr "Vizualizare redirecționări"
+
+#: redirection-strings.php:139 redirection-strings.php:140
+#: redirection-strings.php:203 redirection-strings.php:360
+#: redirection-strings.php:390 redirection-strings.php:395
+msgid "Source URL"
+msgstr "URL sursă"
+
+#: redirection-strings.php:522 redirection-strings.php:536
+msgid "Hits"
+msgstr "Vizite"
+
+#: redirection-strings.php:523 redirection-strings.php:537
+msgid "Last Access"
+msgstr "Ultima vizită"
+
+#: redirection-strings.php:104
+msgid "Error (404)"
+msgstr "Eroare (404)"
+
+#: redirection-strings.php:330
+msgid "Upload"
+msgstr "Încărcare"
+
+#. Author of the plugin
+msgid "John Godley"
+msgstr "John Godley"
+
+#: redirection-strings.php:92 matches/referrer.php:10
+msgid "URL and referrer"
+msgstr "URL și referent"
+
+#: redirection-strings.php:533
+msgid "HTTP code"
+msgstr "Cod HTTP"
+
+#: redirection-strings.php:93 matches/user-agent.php:10
+msgid "URL and user agent"
+msgstr "URL și agent utilizator"
+
+#: models/group.php:149 redirection-strings.php:305
+#: database/schema/latest.php:139
+msgid "Redirections"
+msgstr "Redirecționări"
+
+#: database/schema/latest.php:144
+msgid "Modified Posts"
+msgstr "Articole modificate"
+
+#: redirection-strings.php:359 redirection-strings.php:368
+#: redirection-strings.php:394 redirection-strings.php:410
+msgid "Date"
+msgstr "Dată"
+
+#: redirection-strings.php:450
+msgid "Redirection is free to use - life is wonderful and lovely! It has required a great deal of time and effort to develop and you can help support this development by {{strong}}making a small donation{{/strong}}."
+msgstr "Redirecționarea este gratuită - viața e minunată și frumoasă! Totuși, a necesitat mult timp și efort pentru a-l dezvolta și, dacă ți-a fost de folos, poți contribui la acest proiect {{strong}}făcând o mică donație{{/strong}}."
+
+#: redirection-strings.php:419 redirection-strings.php:432
+#: redirection-strings.php:436 redirection-strings.php:560
+msgid "Add Redirect"
+msgstr "Adaugă redirecționare"
+
+#: redirection-strings.php:527
+msgid "Reset hits"
+msgstr "Resetează vizitele"
+
+#: redirection-strings.php:275 redirection-strings.php:285
+#: redirection-strings.php:526 redirection-strings.php:565
+msgid "Disable"
+msgstr "Dezactivează"
+
+#: redirection-strings.php:274 redirection-strings.php:286
+#: redirection-strings.php:525 redirection-strings.php:566
+msgid "Enable"
+msgstr "Activează"
+
+#: redirection-strings.php:453
+msgid "Plugin Support"
+msgstr "Suport pentru modul"
+
+#: redirection-strings.php:514 redirection-strings.php:573
+msgid "Update"
+msgstr "Actualizează"
+
+#: redirection-strings.php:277 redirection-strings.php:562
+msgid "Filters"
+msgstr "Filtre"
+
+#: redirection-strings.php:547
+msgid "Regular Expression"
+msgstr "Model de căutare (regex)"
+
+#: redirection-strings.php:282 redirection-strings.php:563
+msgid "Edit"
+msgstr "Editează"
