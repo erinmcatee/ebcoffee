@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/erinmcatee/ebcoffee",
   "devDependencies": {
-    "grunt": "^1.0.4",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-contrib-cssmin": "^3.0.0",
-    "grunt-contrib-uglify": "^4.0.1"
+    "grunt": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-uglify": "latest"
   },
   "dependencies": {
     "susy": "^3.0.5"
