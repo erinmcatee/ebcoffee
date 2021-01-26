@@ -41,5 +41,6 @@ wp-settings.php
 wp-signup.php
 wp-trackback.php
 xmlrpc.php
+fw-*
 license.txt
 readme.html
