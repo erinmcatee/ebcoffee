@@ -155,8 +155,8 @@ body {
 
 .Icon {
   height: 5rem;
-  width: 5rem;
-  margin: 1rem 0 0; }
+  width: 17rem;
+  margin: 2rem 0 0; }
 
 .masthead {
   height: 0px; }
@@ -297,7 +297,7 @@ body.woocommerce-checkout .select2-chosen {
 .woocommerce .price .amount {
   color: #252525 !important; }
 .woocommerce .products h3 a {
-  color: #fb4b30; }
+  color: #29323c; }
 .woocommerce .cart {
   margin-top: 0 !important; }
   .woocommerce .cart.shop_table .product-remove .remove:before {
@@ -370,7 +370,7 @@ header.highlight {
   font-size: 2.4rem !important; }
 
 .x-navbar .desktop .x-nav > .current_page_parent > a {
-  box-shadow: inset 0 4px 0 0 #fb4b30;
+  box-shadow: inset 0 4px 0 0 #29323c;
   color: #c9c9c9; }
 
 .woocommerce-SavedPaymentMethods li {
