@@ -58,8 +58,8 @@ body {
 
 .Icon {
 	height: 5rem;
-	width: 5rem;
-	margin:1rem 0 0;
+	width: 17rem;
+	margin:2rem 0 0;
 }
 
 .masthead {
@@ -320,7 +320,7 @@ body.woocommerce-checkout {
 	.products {
 		h3 {
 			a {
-				color:rgb(251,75,48);
+				color:color(dark-blue);
 			}
 		}
 	}
@@ -455,7 +455,7 @@ header.highlight
 }
 
 .x-navbar .desktop .x-nav > .current_page_parent > a {
-	box-shadow: inset 0 4px 0 0 rgb(251,75,48);
+	box-shadow: inset 0 4px 0 0 color(dark-blue);
 	color: hsl(0,0%,79%);
 }
 
