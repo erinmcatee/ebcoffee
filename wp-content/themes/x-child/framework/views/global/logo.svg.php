@@ -1,4 +1,4 @@
-<svg id="icon-logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="290" height="85" viewBox="0 0 937.2 240.92">
+<svg id="icon-logo" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 937.2 240.92">
   <title>ng_logo</title>
   <g>
     <path d="M228.61,208.08a17.23,17.23,0,0,0,29.52,12l11.23,10.86a32.82,32.82,0,1,1-23.55-55.65,33,33,0,0,1,24.93,11.49L258.87,197a17.16,17.16,0,0,0-30.26,11.13Z" style="fill: #fff"/>
