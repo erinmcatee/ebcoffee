@@ -1,0 +1,14 @@
+.x-btn {
+	&.white {
+		background-color: color(white);
+		color: color(gray) !important;
+		text-shadow: none;
+		border: none;
+		
+		&:hover {
+			background-color: color(light-gray);
+			color: color(gray) !important;
+			text-shadow: none;
+		}
+	}
+}

@@ -21,6 +21,16 @@ h1 {
   font-weight: 400;
   letter-spacing: .005rem; }
 
+.x-btn.white {
+  background-color: #FFFFFF;
+  color: #727272 !important;
+  text-shadow: none;
+  border: none; }
+  .x-btn.white:hover {
+    background-color: #cfcfcf;
+    color: #727272 !important;
+    text-shadow: none; }
+
 .switch-field {
   display: block;
   grid-template-columns: 2fr;
@@ -156,7 +166,7 @@ body {
 .Icon {
   height: 5rem;
   width: 17rem;
-  margin: 2rem 0 0; }
+  margin: 1rem 0 0; }
 
 .masthead {
   height: 0px; }
