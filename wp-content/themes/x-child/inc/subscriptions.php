@@ -101,7 +101,7 @@ function eb_radio_variation_attribute_options( $args = array() ) {
 }
 
 
-add_filter( 'woocommerce_available_variation', 'variations_product_price_per_bag' );
+//add_filter( 'woocommerce_available_variation', 'variations_product_price_per_bag' );
 function variations_product_price_per_bag( $variations ) {
 	
 	if ( array_key_exists('attribute_pa_bags-per-shipment', $variations['attributes']) && array_key_exists('attribute_pa_plan', $variations['attributes']) ) :
@@ -207,4 +207,3 @@ function eb_add_qty_label() {
 	
 	echo $label;
 }
-

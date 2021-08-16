@@ -95,7 +95,8 @@ h1 {
   display: flex;
   flex-direction: column; }
   .subscription-variations .attribute label {
-    text-align: center; }
+    text-align: center;
+    height: 100%; }
     .subscription-variations .attribute label h5 {
       margin-top: .3rem;
       margin-bottom: .1rem;
@@ -274,34 +275,43 @@ body.woocommerce-checkout .select2-chosen {
 .woocommerce div.product.product-type-variable-subscription .summary {
   float: none;
   width: 100%; }
+.woocommerce div.product.product-type-variable-subscription .woocommerce-tabs {
+  display: none; }
 .woocommerce div.product .summary .single_variation {
   text-align: left; }
   .woocommerce div.product .summary .single_variation .price > .amount {
     color: #252525; }
 .woocommerce div.product .summary .subscription_variation {
   padding: 1rem;
-  background-color: #FFFFFF; }
-  .woocommerce div.product .summary .subscription_variation .single_variation .bag-price > .amount {
-    font-size: 1.5rem;
-    color: #252525;
-    font-weight: 600; }
-  .woocommerce div.product .summary .subscription_variation .single_variation .bag-price > .details {
-    color: #252525; }
-  .woocommerce div.product .summary .subscription_variation .single_variation .savings-badge {
-    width: fit-content;
-    padding: .6rem;
-    margin: .5rem 0; }
-    .woocommerce div.product .summary .subscription_variation .single_variation .savings-badge .amount {
-      font-size: 1.1rem;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center; }
+  .woocommerce div.product .summary .subscription_variation .single_variation {
+    order: 2;
+    margin-left: 1rem; }
+    .woocommerce div.product .summary .subscription_variation .single_variation .bag-price > .amount {
+      font-size: 1.5rem;
+      color: #252525;
       font-weight: 600; }
-  .woocommerce div.product .summary .subscription_variation .single_variation .price {
-    margin-bottom: 0; }
-    .woocommerce div.product .summary .subscription_variation .single_variation .price > .amount {
-      font-size: 1rem !important; }
-  .woocommerce div.product .summary .subscription_variation .single_variation .total-shipping {
-    margin-bottom: 1rem;
-    display: block;
-    font-size: .85rem; }
+    .woocommerce div.product .summary .subscription_variation .single_variation .bag-price > .details {
+      color: #252525; }
+    .woocommerce div.product .summary .subscription_variation .single_variation .savings-badge {
+      width: fit-content;
+      padding: .6rem;
+      margin: .5rem 0; }
+      .woocommerce div.product .summary .subscription_variation .single_variation .savings-badge .amount {
+        font-size: 1.1rem;
+        font-weight: 600; }
+    .woocommerce div.product .summary .subscription_variation .single_variation .price {
+      margin-bottom: 0; }
+      .woocommerce div.product .summary .subscription_variation .single_variation .price > .amount {
+        font-size: 1.8rem !important; }
+    .woocommerce div.product .summary .subscription_variation .single_variation .total-shipping {
+      margin-bottom: 1rem;
+      display: block;
+      font-size: .85rem; }
+  .woocommerce div.product .summary .subscription_variation .woocommerce-variation-add-to-cart {
+    order: 1; }
 .woocommerce div.product .summary table.roast-meta td {
   padding: .9rem .625rem; }
 .woocommerce .price .amount {

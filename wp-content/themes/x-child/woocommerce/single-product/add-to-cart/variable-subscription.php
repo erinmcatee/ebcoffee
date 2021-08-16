@@ -90,7 +90,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							));
 							
 							//Clear button
-							echo wp_kses( end( $attribute_keys ) === $taxonomy ? apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . __( 'Clear', 'woocommerce-subscriptions' ) . '</a>' ) : '', array( 'a' => array( 'class' => array(), 'href' => array() ) ) );
+							//echo wp_kses( end( $attribute_keys ) === $taxonomy ? apply_filters( 'woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . __( 'Clear', 'woocommerce-subscriptions' ) . '</a>' ) : '', array( 'a' => array( 'class' => array(), 'href' => array() ) ) );
 
 							?>
 							</td>

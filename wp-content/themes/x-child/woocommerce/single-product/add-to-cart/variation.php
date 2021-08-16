@@ -22,10 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="woocommerce-variation-price">
 		{{{ console.log(data.variation) }}}
-		{{{ data.variation.bag_html }}}
-		{{{ data.variation.savings_badge }}}		
+		{{{ data.variation.bag_html }}}	
 		{{{ data.variation.price_html }}}
-		{{{ data.variation.total_shipping_html }}}
 	</div>
 	
 	<div class="woocommerce-variation-availability">
