@@ -240,7 +240,11 @@ body.woocommerce-checkout {
 			.summary {
 				float: none;
 				width: 100%;
-			}			
+			}
+			
+			.woocommerce-tabs {
+				display: none;
+			}	
 		}
 		
 		.summary {
@@ -259,8 +263,14 @@ body.woocommerce-checkout {
 				
 				padding: 1rem;
 				background-color: color(white);
+				display: flex;
+				align-items: center;
 				
 				.single_variation {
+					
+					order: 2;
+					margin-left: 1rem;
+					
 					.bag-price {
 						> .amount {
 							font-size: 1.5rem;
@@ -288,7 +298,7 @@ body.woocommerce-checkout {
 						margin-bottom: 0;
 						
 						 > .amount {
-							 font-size: 1rem !important;
+							 font-size: 1.8rem !important;
 						 }
 					}
 					
@@ -297,6 +307,11 @@ body.woocommerce-checkout {
 						display: block;
 						font-size: .85rem;
 					}
+				}
+				
+				.woocommerce-variation-add-to-cart {
+					
+					order:1;
 				}
 			}
 			
