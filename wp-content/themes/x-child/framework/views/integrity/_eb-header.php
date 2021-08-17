@@ -17,10 +17,14 @@
   <?php endif;
 
 endif;
-	
+
+if (is_product() ) :
+
 	$product = wc_get_product( get_the_id() );
 	if(get_field('header_global_block_id','option')) {
 		if( $product->is_type( 'variable-subscription' ) ){
 			echo do_shortcode( '[cs_gb id=' . get_field('header_global_block_id','option') . ']');
 		}
 	}
+	
+endif;
