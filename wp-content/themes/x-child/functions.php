@@ -111,7 +111,7 @@ function wc_npr_filter_phone( $address_fields ) {
 }
 
 // Change login error for username/email
-add_filter('login_errors', create_function('$a', "return '<b>Error:</b> Email address is required.';"));
+add_filter('login_errors', function($a) {return '<b>Error:</b> Email address is required.';});
 
 /* // Remove Country from checkout 
 add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
