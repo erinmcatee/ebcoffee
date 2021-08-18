@@ -1,4 +1,12 @@
 // Color select function
+$wide: 979px;
+
 @function color($color-name) {
 	@return map-get($colors, $color-name)
+}
+
+@mixin primary {
+	@media (max-width: #{$wide}) {
+		@content;
+	}
 }
