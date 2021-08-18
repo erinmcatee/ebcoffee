@@ -8,7 +8,7 @@
 ?>
 
 
-<?php if (get_field('image_override_header') == FALSE ) : 	
+<?php if (!get_field('image_override_header') || is_shop() == TRUE ) : 	
 
   if ( get_field('header_bg_image', 'option') ) : ?>
   	<div style="background-image:url('<?php the_field("header_bg_image", "option"); ?>'); background-position:top; background-size:cover;" class="bg-image header-min-height"></div>
