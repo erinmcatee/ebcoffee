@@ -346,6 +346,8 @@ body.woocommerce-checkout {
 		&.shop_table {
 			.product-remove {
 				.remove {
+					font-size: 1.3rem !important;
+					
 					&:before {
 						font-family: "fontawesome";
 						content: "\f2ed";
@@ -406,6 +408,12 @@ body.woocommerce-checkout {
 
 .cart_totals td {
 	text-align: right;
+}
+
+.recurring-totals {
+	> th {
+		padding-top: 3rem;
+	}
 }
 
 .woocommerce-account form h3#ship-to-different-address, .woocommerce-checkout form h3#ship-to-different-address, .woocommerce-account form h3:first-child, .woocommerce-checkout form h3 {
@@ -556,6 +564,7 @@ header.highlight
 	.woocommerce {
 		.cart {
 			&.shop_table {
+				
 				.product-name {
 					display: block;
 					width: 50%;

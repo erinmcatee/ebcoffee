@@ -90,8 +90,8 @@ function eb_radio_variation_attribute_options( $args = array() ) {
 			    if($term_image) : 
 			    $html .= '<img class="attr-image" src="' . $term_image . '" alt="' . esc_html( apply_filters( 'woocommerce_variation_option_name', $term->name, $term, $attribute, $product ) ) . '" />';
 			    endif;
-			    $html .= '<p class="heading">' . esc_html( apply_filters( 'woocommerce_variation_option_name', $term->name, $term, $attribute, $product ) ) . '</p>';
-			    $html .= '<p class="subheading">' . esc_html( $term->description ) . '</p>';
+			    $html .= '<div><p class="heading">' . esc_html( apply_filters( 'woocommerce_variation_option_name', $term->name, $term, $attribute, $product ) ) . '</p>';
+			    $html .= '<p class="subheading">' . esc_html( $term->description ) . '</p></div>';
 			    $html .= '</label></div>';
 		    }
 		    

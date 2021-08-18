@@ -72,6 +72,11 @@
 				content: "\f14a";
 				font-family: "fontawesome";
 			}
+			
+			@include primary {
+				left: .5rem;
+				right: auto;
+			}
 		}		
 		
 		.attr-image {
@@ -116,6 +121,12 @@
 				margin-bottom: .1rem;
 				font-weight: 400;
 			}
+			
+			@include primary {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
 		}
 		
 		
@@ -133,6 +144,11 @@
 
 			&.four-up {
 				grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+			
+			@include primary {
+				display: flex;
+				flex-direction: column;
 			}
 		}
 	}
