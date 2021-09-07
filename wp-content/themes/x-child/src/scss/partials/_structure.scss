@@ -363,6 +363,20 @@ body.woocommerce-checkout {
 					width:auto;
 				}				
 			}
+
+			.cart_item {
+				.product-name {
+					color: color(black);
+				}
+				.variation {
+					font-size: .7rem;
+				}
+				
+				&:not(.product-name) {
+					padding-top: 1px;
+					padding-bottom: 1px;
+				}
+			}
 		}
 		
 		.actions {
