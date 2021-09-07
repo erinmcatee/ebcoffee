@@ -343,6 +343,13 @@ body.woocommerce-checkout .select2-chosen {
     padding: .5em .625em; }
     .woocommerce .cart.shop_table .product-thumbnail img {
       width: auto; }
+  .woocommerce .cart.shop_table .cart_item .product-name {
+    color: #000000; }
+  .woocommerce .cart.shop_table .cart_item .variation {
+    font-size: .7rem; }
+  .woocommerce .cart.shop_table .cart_item:not(.product-name) {
+    padding-top: 1px;
+    padding-bottom: 1px; }
   .woocommerce .cart .actions .coupon {
     width: 37.6% !important;
     float: right !important; }
