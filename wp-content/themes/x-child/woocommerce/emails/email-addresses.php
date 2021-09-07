@@ -20,12 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $text_align = is_rtl() ? 'right' : 'left';
-$address    = $order->get_formatted_billing_address();	
+$address    = $order->get_formatted_billing_address();
 $shipping   = $order->get_formatted_shipping_address();
 
-?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top;" border="0">
+?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: 40px; padding:0;" border="0">
 	<tr>
-		<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;" valign="top" width="50%">
+		<td style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; border:0; padding:0;" valign="top" width="50%">
 			<h3><?php esc_html_e( 'Billing address', 'woocommerce' ); ?></h3>
 
 			<address class="address">
@@ -42,7 +42,12 @@ $shipping   = $order->get_formatted_shipping_address();
 			<td style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; padding:0;" valign="top" width="50%">
 				<h3><?php esc_html_e( 'Shipping address', 'woocommerce' ); ?></h3>
 
-				<address class="address"><?php echo wp_kses_post( $shipping ); ?></address>
+				<address class="address">
+					<?php echo wp_kses_post( $shipping ); ?>
+					<?php if ( $order->get_shipping_phone() ) : ?>
+						<br /><?php echo wc_make_phone_clickable( $order->get_shipping_phone() ); ?>
+					<?php endif; ?>
+				</address>
 			</td>
 		<?php endif; ?>
 	</tr>
