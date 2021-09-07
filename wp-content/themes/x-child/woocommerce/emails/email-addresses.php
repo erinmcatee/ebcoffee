@@ -11,8 +11,8 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates/Emails
- * @version 3.9.0
+ * @package WooCommerce\Templates\Emails
+ * @version 5.6.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $text_align = is_rtl() ? 'right' : 'left';
+$address    = $order->get_formatted_billing_address();	
+$shipping   = $order->get_formatted_shipping_address();
 
 ?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top;" border="0">
 	<tr>
